@@ -1,0 +1,141 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckh4jq7q54ht5"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_stvub"]
+[ext_resource type="Script" path="res://objects/dice/d20/DTwenty.cs" id="2_1ccoi"]
+[ext_resource type="PackedScene" uid="uid://bgsjtodaif53l" path="res://models/dice-d20/source/dadoD20.fbx" id="3_1rx8j"]
+[ext_resource type="ArrayMesh" uid="uid://dx184l8yuy31l" path="res://models/dtwenty.obj" id="3_xk5qv"]
+[ext_resource type="Texture2D" uid="uid://0p32d3evsis4" path="res://models/dice-d20/textures/dadosText.png" id="4_mg61o"]
+[ext_resource type="Texture2D" uid="uid://ps5telfg2mvv" path="res://models/dice-d20/textures/NormalMap.png" id="5_lb4dk"]
+[ext_resource type="Texture2D" uid="uid://6b22prr2p403" path="res://models/dice-d20/textures/roughnessDado.png" id="6_h4o5n"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vtlmr"]
+points = PackedVector3Array(-0.894425, -0.447297, -0.000166595, -0.000175118, -1, -0.000166595, -0.276487, -0.447297, 0.85064, -0.7237, 0.447191, 0.525572, -0.7237, 0.447191, -0.525738, -0.276487, -0.447297, -0.85064, 0.723525, -0.447297, -0.525738, 0.723525, -0.447297, 0.525572, 0.276312, 0.447191, 0.85064, -0.000175118, 1.00441, -0.000166595, 0.276312, 0.447191, -0.85064, 0.894425, 0.447191, -0.000166595)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emdi0"]
+albedo_texture = ExtResource("4_mg61o")
+roughness_texture = ExtResource("6_h4o5n")
+normal_enabled = true
+normal_texture = ExtResource("5_lb4dk")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6oygh"]
+
+[node name="DTwenty" type="RigidBody3D"]
+physics_material_override = ExtResource("1_stvub")
+can_sleep = false
+script = ExtResource("2_1ccoi")
+metadata/type = "d20"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_vtlmr")
+
+[node name="Root Scene" parent="." instance=ExtResource("3_1rx8j")]
+transform = Transform3D(36.26, 0, 0, 0, 36.26, 0, 0, 0, 36.26, 0, 0, 0)
+
+[node name="D20" parent="Root Scene/RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_emdi0")
+
+[node name="Dtwenty" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("3_xk5qv")
+
+[node name="face1" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.253284, 0.103002, 0.778095)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face2" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.273204, 0.157766, -0.754024)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face3" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.65485, 0.141102, 0.501966)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face4" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.42, -0.66847, -0.298305)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face5" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.851758, 0.123919, 0.0268601)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face6" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.461768, -0.703943, 0.0101221)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face7" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.150077, 0.692629, 0.454656)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face8" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.658867, 0.151606, -0.473237)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face9" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.159224, -0.667228, 0.473868)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face10" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.388922, 0.680677, -0.290882)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face11" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.391238, -0.686777, 0.295759)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face12" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.145163, 0.669882, -0.485856)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face13" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.672909, -0.155159, 0.485139)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face14" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.160365, -0.687797, -0.456726)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face15" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.518843, 0.669575, -0.00193515)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face16" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.830979, -0.155841, 0)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face17" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.429095, 0.678268, 0.266693)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face18" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.674191, -0.191052, -0.457707)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face19" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.265315, -0.174326, 0.777488)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[node name="face20" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.246845, -0.141995, -0.78148)
+shape = SubResource("SphereShape3D_6oygh")
+target_position = Vector3(0, 0, 0)
+
+[editable path="Root Scene"]

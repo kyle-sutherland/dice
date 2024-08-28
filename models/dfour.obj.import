@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://m4bl281dphsj"
+path="res://.godot/imported/dfour.obj-7c3c8ce934e2151a7c297e26a439b533.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dfour.obj-7c3c8ce934e2151a7c297e26a439b533.mesh"]
+
+source_file="res://models/dfour.obj"
+dest_files=["res://.godot/imported/dfour.obj-7c3c8ce934e2151a7c297e26a439b533.mesh", "res://.godot/imported/dfour.obj-7c3c8ce934e2151a7c297e26a439b533.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

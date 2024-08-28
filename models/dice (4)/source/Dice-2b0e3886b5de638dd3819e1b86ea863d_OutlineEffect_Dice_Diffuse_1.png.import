@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bldt3r5lr60oa"
+path.s3tc="res://.godot/imported/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse_1.png-4bda29cc63359785acc48ba1ea5561b1.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "3b3a5a2efb03c511183f0be819a474ee"
+}
+
+[deps]
+
+source_file="res://models/dice (4)/source/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse_1.png"
+dest_files=["res://.godot/imported/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse_1.png-4bda29cc63359785acc48ba1ea5561b1.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

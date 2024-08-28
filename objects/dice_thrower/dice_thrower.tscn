@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4gcab7fghmvy"]
+
+[ext_resource type="Script" path="res://objects/dice_thrower/DiceThrower.cs" id="1_10mub"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q5f3c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fl8ca"]
+albedo_color = Color(1, 0, 0, 0.960784)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 1.95
+
+[node name="DiceThrower" type="Node3D"]
+script = ExtResource("1_10mub")
+
+[node name="Aimer" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Aimer"]
+transform = Transform3D(-2.19542e-08, -0.754271, 2.19542e-08, 0, -3.29702e-08, -0.502253, 0.502253, -3.29702e-08, 9.59649e-16, 0, 0, 0)
+gi_mode = 2
+mesh = SubResource("CylinderMesh_q5f3c")
+surface_material_override/0 = SubResource("StandardMaterial3D_fl8ca")

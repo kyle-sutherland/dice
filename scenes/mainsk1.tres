@@ -1,0 +1,17 @@
+[gd_resource type="ProceduralSkyMaterial" load_steps=4 format=3 uid="uid://cm48tlxr8n62s"]
+
+[sub_resource type="Gradient" id="Gradient_v2jh2"]
+interpolation_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dr1og"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2vy38"]
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_v2jh2")
+noise = SubResource("FastNoiseLite_dr1og")
+
+[resource]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_cover = SubResource("NoiseTexture2D_2vy38")
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
