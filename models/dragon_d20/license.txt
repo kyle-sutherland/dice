@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dragon D20
+* source:	https://sketchfab.com/3d-models/dragon-d20-aaf517d3393845a8a20c919292baa891
+* author:	monsterdicegame (https://sketchfab.com/monsterdicegame)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dragon D20" (https://sketchfab.com/3d-models/dragon-d20-aaf517d3393845a8a20c919292baa891) by monsterdicegame (https://sketchfab.com/monsterdicegame) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dice", "dice.csproj", "{476CD45D-CE6B-475D-BF3F-63FA9CFC2172}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{476CD45D-CE6B-475D-BF3F-63FA9CFC2172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476CD45D-CE6B-475D-BF3F-63FA9CFC2172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476CD45D-CE6B-475D-BF3F-63FA9CFC2172}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{476CD45D-CE6B-475D-BF3F-63FA9CFC2172}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{476CD45D-CE6B-475D-BF3F-63FA9CFC2172}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{476CD45D-CE6B-475D-BF3F-63FA9CFC2172}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

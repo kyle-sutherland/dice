@@ -1,0 +1,266 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.8559567928314209,
+        1.939083456993103,
+        4.576694965362549
+      ],
+      "min": [
+        -2.061361074447632,
+        -1.9355125427246094,
+        0.008197784423828125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 786384,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9999041557312012,
+        1.0,
+        0.9999966025352478
+      ],
+      "min": [
+        -0.999997079372406,
+        -0.9999992847442627,
+        -0.9999874234199524
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 332235,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1572768,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        2.0599148273468018,
+        1.939083456993103,
+        4.705538749694824
+      ],
+      "min": [
+        -1.9232131242752075,
+        -1.9390835762023926,
+        0.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2359152,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.999997079372406,
+        0.9999904632568359,
+        0.9999926090240479
+      ],
+      "min": [
+        -0.9999671578407288,
+        -0.9999992847442627,
+        -0.9999874830245972
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1328940,
+      "componentType": 5125,
+      "count": 303684,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3145536,
+      "componentType": 5126,
+      "count": 65210,
+      "max": [
+        2.061361074447632,
+        1.939083456993103,
+        4.696498870849609
+      ],
+      "min": [
+        -2.05770206451416,
+        -1.937957525253296,
+        0.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3928056,
+      "componentType": 5126,
+      "count": 65210,
+      "max": [
+        0.9999935626983643,
+        0.9999857544898987,
+        0.9999846816062927
+      ],
+      "min": [
+        -0.9999935626983643,
+        -0.9999993443489075,
+        -0.999880313873291
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2543676,
+      "componentType": 5125,
+      "count": 256455,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "monsterdicegame (https://sketchfab.com/monsterdicegame)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/dragon-d20-aaf517d3393845a8a20c919292baa891",
+      "title": "Dragon D20"
+    },
+    "generator": "Sketchfab-12.67.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3569496,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4710576,
+      "byteOffset": 3569496,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 8280072,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Scene_-_Root",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_1",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_2",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6
+          },
+          "indices": 8,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        3,
+        4
+      ],
+      "name": "DragonD20.stl.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_2"
+    },
+    {
+      "mesh": 1,
+      "name": "Object_3"
+    },
+    {
+      "mesh": 2,
+      "name": "Object_4"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	D20 with Pips
+* source:	https://sketchfab.com/3d-models/d20-with-pips-cfa7be10ec8c4c2f9665c725f55e09e6
+* author:	habit (https://sketchfab.com/habit)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "D20 with Pips" (https://sketchfab.com/3d-models/d20-with-pips-cfa7be10ec8c4c2f9665c725f55e09e6) by habit (https://sketchfab.com/habit) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

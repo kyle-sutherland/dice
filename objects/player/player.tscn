@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://51mgb5qh7oba"]
+
+[ext_resource type="Script" path="res://objects/player/Player.cs" id="1_eaaoe"]
+[ext_resource type="Script" path="res://objects/player/Hud.cs" id="2_p7egi"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_eaaoe")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+disabled = true
+polygon = PackedVector2Array(0, 0)
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_p7egi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Total:"
+
+[node name="Total" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "D6Total:"
+
+[node name="D6Total" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2

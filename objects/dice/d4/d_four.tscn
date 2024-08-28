@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdhdbl4c0dp5q"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_jp3de"]
+[ext_resource type="ArrayMesh" uid="uid://m4bl281dphsj" path="res://models/dfour.obj" id="1_l8ouk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hhlu6"]
+points = PackedVector3Array(-0.000169575, -0.707106, -1, -0.866025, -0.707106, 0.5, -0.000169575, 0.707094, -9.78708e-05, 0.866025, -0.707106, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w5p8r"]
+
+[node name="Node3D" type="RigidBody3D"]
+physics_material_override = ExtResource("1_jp3de")
+
+[node name="Dfour" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_l8ouk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_hhlu6")
+
+[node name="face1" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00304054, -0.154313, 0.354182)
+shape = SubResource("SphereShape3D_w5p8r")
+target_position = Vector3(0, 0, 0)
+
+[node name="face2" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.312694, -0.184388, -0.181273)
+shape = SubResource("SphereShape3D_w5p8r")
+target_position = Vector3(0, 0, 0)
+
+[node name="face3" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.295655, -0.172799, -0.206842)
+shape = SubResource("SphereShape3D_w5p8r")
+target_position = Vector3(0, 0, 0)
+
+[node name="face4" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00274348, -0.765766, 0.000112295)
+shape = SubResource("SphereShape3D_w5p8r")
+target_position = Vector3(0, 0, 0)

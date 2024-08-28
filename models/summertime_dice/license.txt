@@ -1,0 +1,11 @@
+Model Information:
+* title:	Summertime dice
+* source:	https://sketchfab.com/3d-models/summertime-dice-36576590b5f04ce6999c01c28fe7171e
+* author:	Not that Alice (https://sketchfab.com/notthatalice)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Summertime dice" (https://sketchfab.com/3d-models/summertime-dice-36576590b5f04ce6999c01c28fe7171e) by Not that Alice (https://sketchfab.com/notthatalice) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
