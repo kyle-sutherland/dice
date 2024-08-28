@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdhdbl4c0dp5q"]
+[gd_scene load_steps=6 format=3 uid="uid://cdhdbl4c0dp5q"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_jp3de"]
 [ext_resource type="ArrayMesh" uid="uid://m4bl281dphsj" path="res://models/dfour.obj" id="1_l8ouk"]
+[ext_resource type="Script" path="res://objects/dice/d4/DFour.cs" id="2_w1k8x"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hhlu6"]
 points = PackedVector3Array(-0.000169575, -0.707106, -1, -0.866025, -0.707106, 0.5, -0.000169575, 0.707094, -9.78708e-05, 0.866025, -0.707106, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w5p8r"]
 
-[node name="Node3D" type="RigidBody3D"]
+[node name="DFour" type="RigidBody3D"]
 physics_material_override = ExtResource("1_jp3de")
+script = ExtResource("2_w1k8x")
 
 [node name="Dfour" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_l8ouk")
