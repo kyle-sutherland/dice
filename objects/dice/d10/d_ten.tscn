@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://qd20mngvn28k"]
+
+[ext_resource type="Script" path="res://objects/dice/d10/DTen.cs" id="1_4pqe4"]
+[ext_resource type="ArrayMesh" uid="uid://dlw3e7eknv81l" path="res://models/dten.obj" id="2_uyomb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hvel5"]
+points = PackedVector3Array(-0.000187337, -1, -0.000196934, -0.591463, -0.105726, -0.814165, 0.591275, -0.105726, -0.814165, 0.956982, -0.105726, 0.310852, -0.000187337, -0.105726, 1.00603, -0.956982, -0.105726, 0.310852, -0.000187337, 0.105509, -1.00623, -0.956982, 0.105509, -0.311049, 0.956982, 0.105509, -0.311049, 0.591275, 0.105509, 0.813968, -0.591463, 0.105509, 0.813968, -0.000187337, 0.999979, -0.000196934)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wiqg8"]
+
+[node name="DTen" type="RigidBody3D"]
+script = ExtResource("1_4pqe4")
+
+[node name="Dten" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_uyomb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_hvel5")
+
+[node name="face1" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face2" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face3" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face4" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face5" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face6" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face7" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face8" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face9" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
+
+[node name="face10" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_wiqg8")
+target_position = Vector3(0, 0, 0)
