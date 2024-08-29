@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dekb7okf34gs7"]
+[gd_scene load_steps=6 format=3 uid="uid://dekb7okf34gs7"]
 
 [ext_resource type="Script" path="res://objects/dice/d12/DTwelve.cs" id="1_8ux34"]
 [ext_resource type="ArrayMesh" uid="uid://b66jbsffj0non" path="res://models/d12.obj" id="1_evcvv"]
+[ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_u0xrl"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7ga3q"]
 points = PackedVector3Array(0.934144, 0.356787, -0.000182867, 0.934144, -0.356999, -0.000182867, 0.356787, -1.41859e-05, -0.934172, 0.577159, 0.577159, -0.577365, -1.41859e-05, 0.934144, -0.35699, -1.41859e-05, 0.934144, 0.356624, 0.577159, 0.577159, 0.577182, 0.356787, -1.41859e-05, 0.934172, -1.41859e-05, -0.934172, 0.356624, -1.41859e-05, -0.934172, -0.35699, 0.577159, -0.577371, -0.577365, 0.577159, -0.577371, 0.577182, -0.356999, -1.41859e-05, -0.934172, -0.934172, 0.356787, -0.000182867, -0.577371, 0.577159, -0.577365, -0.577371, 0.577159, 0.577182, -0.356999, -1.41859e-05, 0.934172, -0.577371, -0.577371, 0.577182, -0.934172, -0.356999, -0.000182867, -0.577371, -0.577371, -0.577365)
@@ -9,6 +10,7 @@ points = PackedVector3Array(0.934144, 0.356787, -0.000182867, 0.934144, -0.35699
 [sub_resource type="SphereShape3D" id="SphereShape3D_di1gv"]
 
 [node name="DTwelve" type="RigidBody3D"]
+physics_material_override = ExtResource("1_u0xrl")
 script = ExtResource("1_8ux34")
 
 [node name="D12" type="MeshInstance3D" parent="."]

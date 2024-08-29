@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://qd20mngvn28k"]
+[gd_scene load_steps=6 format=3 uid="uid://qd20mngvn28k"]
 
 [ext_resource type="Script" path="res://objects/dice/d10/DTen.cs" id="1_4pqe4"]
+[ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_ketk8"]
 [ext_resource type="ArrayMesh" uid="uid://dlw3e7eknv81l" path="res://models/dten.obj" id="2_uyomb"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hvel5"]
@@ -9,6 +10,7 @@ points = PackedVector3Array(-0.000187337, -1, -0.000196934, -0.591463, -0.105726
 [sub_resource type="SphereShape3D" id="SphereShape3D_wiqg8"]
 
 [node name="DTen" type="RigidBody3D"]
+physics_material_override = ExtResource("1_ketk8")
 script = ExtResource("1_4pqe4")
 
 [node name="Dten" type="MeshInstance3D" parent="."]
