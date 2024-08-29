@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class DiceThrower : Node3D
@@ -32,11 +33,165 @@ public partial class DiceThrower : Node3D
 
     private Label3D marquee;
 
-    public Die[] AllDice { get; private set; }
-
     public int dSixTotal { get; private set; }
 
     public int total { get; private set; }
+
+    public DiceRack diceRack { get; private set; } = new DiceRack();
+
+    public class DiceRack
+    {
+        public DSix[] dsix { get; set; }
+        public DFour[] dfour { get; set; }
+        public DEight[] deight { get; set; }
+        public DTen[] dten { get; set; }
+        public DTwelve[] dtwelve { get; set; }
+        public DTwenty[] dtwenty { get; set; }
+
+        public void addDie(Die die)
+        {
+            string type = die.GetType().ToString();
+            if (type == "DSix")
+            {
+                dsix.SetValue(die, dsix.GetLength(0));
+            }
+            else if (type == "DFour")
+            {
+                dfour.SetValue(die, dfour.GetLength(0));
+            }
+            else if (type == "DEight")
+            {
+                deight.SetValue(die, deight.GetLength(0));
+            }
+            else if (type == "DTen")
+            {
+                dten.SetValue(die, dten.GetLength(0));
+            }
+            else if (type == "DTwelve")
+            {
+                dtwelve.SetValue(die, dtwelve.GetLength(0));
+            }
+            else if (type == "DTwenty")
+            {
+                dtwenty.SetValue(die, dtwenty.GetLength(0));
+            }
+        }
+
+        public int CountDSix()
+        {
+            int total = 0;
+            foreach (Die die in dsix)
+            {
+                total += die.Value;
+            }
+            return total;
+        }
+
+        public int CountDFour()
+        {
+            int total = 0;
+            foreach (Die die in dfour)
+            {
+                total += die.Value;
+            }
+            return total;
+        }
+
+        public int CountDEight()
+        {
+            int total = 0;
+            foreach (Die die in deight)
+            {
+                total += die.Value;
+            }
+            return total;
+        }
+
+        public int CountDTen()
+        {
+            int total = 0;
+            foreach (Die die in dten)
+            {
+                total += die.Value;
+            }
+            return total;
+        }
+
+        public int CountDTwelve()
+        {
+            int total = 0;
+            foreach (Die die in dtwelve)
+            {
+                total += die.Value;
+            }
+            return total;
+        }
+
+        public int CountDTwenty()
+        {
+            int total = 0;
+            foreach (Die die in dtwenty)
+            {
+                total += die.Value;
+            }
+            return total;
+        }
+
+        public int CountAll()
+        {
+            int total = 0;
+            total += CountDEight();
+            total += CountDSix();
+            total += CountDFour();
+            total += CountDTen();
+            total += CountDTwelve();
+            total += CountDTwenty();
+            return total;
+        }
+
+        public int Check(Array dice, int check)
+        {
+            int n = 0;
+            foreach (Die die in dice)
+            {
+                if (die.Value >= check)
+                {
+                    n++;
+                }
+            }
+            return n;
+        }
+
+        public int checkDSix(int check)
+        {
+            return Check(dsix, check);
+        }
+
+        public int checkDFour(int check)
+        {
+            return Check(dfour, check);
+        }
+
+        public int checkDEight(int check)
+        {
+            return Check(deight, check);
+        }
+
+        public int checkDTen(int check)
+        {
+            return Check(dten, check);
+        }
+
+        public int checkDTwelve(int check)
+        {
+            return Check(dtwelve, check);
+        }
+
+        public int checkDTwenty(int check)
+        {
+            return Check(dtwenty, check);
+        }
+    }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -55,7 +210,7 @@ public partial class DiceThrower : Node3D
     public override void _Process(double delta)
     {
         CountAllDice();
-        marquee.Text = $"{diceParent.GetChildCount()}d6 total: {total}";
+        marquee.Text = $"{diceRack.dtwenty.GetLength(0)}d20 total: {diceRack.CountDTwenty()}";
     }
 
     public override void _Input(InputEvent @event)
@@ -89,7 +244,7 @@ public partial class DiceThrower : Node3D
         Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
         dieInstance.ApplyForce(launchVector);
         dieInstance.ApplyTorque(launchTorque);
-        AllDice.SetValue(dieInstance, diceParent.GetChildCount());
+        diceRack.addDie(dieInstance);
     }
 
     public void ClearDice()
