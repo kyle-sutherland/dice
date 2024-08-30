@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdhdbl4c0dp5q"]
+[gd_scene load_steps=10 format=3 uid="uid://cdhdbl4c0dp5q"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_jp3de"]
 [ext_resource type="ArrayMesh" uid="uid://m4bl281dphsj" path="res://models/dfour.obj" id="1_l8ouk"]
 [ext_resource type="Script" path="res://objects/dice/d4/DFour.cs" id="2_w1k8x"]
+[ext_resource type="Texture2D" uid="uid://cxlsad5ijl4si" path="res://models/Simple RPG Dice/Textures/T_Dice_A_2048.png" id="3_ytee7"]
+[ext_resource type="ArrayMesh" uid="uid://bblb45ebrvky4" path="res://models/Simple RPG Dice/OBJ/Dice_D4.obj" id="4_0e8cw"]
+[ext_resource type="Texture2D" uid="uid://otq5d3b103f4" path="res://models/Simple RPG Dice/Textures/T_Dice_N_2048.png" id="4_y10wr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_486ar"]
+albedo_texture = ExtResource("3_ytee7")
+normal_enabled = true
+normal_texture = ExtResource("4_y10wr")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hhlu6"]
 points = PackedVector3Array(-0.000169575, -0.707106, -1, -0.866025, -0.707106, 0.5, -0.000169575, 0.707094, -9.78708e-05, 0.866025, -0.707106, 0.5)
@@ -10,10 +18,19 @@ points = PackedVector3Array(-0.000169575, -0.707106, -1, -0.866025, -0.707106, 0
 [sub_resource type="SphereShape3D" id="SphereShape3D_w5p8r"]
 
 [node name="DFour" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mass = 0.7
 physics_material_override = ExtResource("1_jp3de")
+max_contacts_reported = 1
 script = ExtResource("2_w1k8x")
 
+[node name="DiceD4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.570896, 0, -0.331176, 0, 0.66, 0, 0.331176, 0, 0.570896, 0.199332, -0.0775006, 0.114276)
+material_override = SubResource("StandardMaterial3D_486ar")
+mesh = ExtResource("4_0e8cw")
+
 [node name="Dfour" type="MeshInstance3D" parent="."]
+visible = false
 mesh = ExtResource("1_l8ouk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -38,3 +55,6 @@ target_position = Vector3(0, 0, 0)
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00274348, -0.765766, 0.000112295)
 shape = SubResource("SphereShape3D_w5p8r")
 target_position = Vector3(0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.197162, 0)

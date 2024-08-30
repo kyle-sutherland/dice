@@ -1,70 +1,85 @@
-[gd_scene load_steps=6 format=3 uid="uid://qd20mngvn28k"]
+[gd_scene load_steps=10 format=3 uid="uid://qd20mngvn28k"]
 
 [ext_resource type="Script" path="res://objects/dice/d10/DTen.cs" id="1_4pqe4"]
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_ketk8"]
 [ext_resource type="ArrayMesh" uid="uid://dlw3e7eknv81l" path="res://models/dten.obj" id="2_uyomb"]
+[ext_resource type="Texture2D" uid="uid://cxlsad5ijl4si" path="res://models/Simple RPG Dice/Textures/T_Dice_A_2048.png" id="4_anfuc"]
+[ext_resource type="Texture2D" uid="uid://otq5d3b103f4" path="res://models/Simple RPG Dice/Textures/T_Dice_N_2048.png" id="5_physa"]
+[ext_resource type="ArrayMesh" uid="uid://divp2g5lp1380" path="res://models/Simple RPG Dice/OBJ/Dice_D10.obj" id="6_sdqt6"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hvel5"]
 points = PackedVector3Array(-0.000187337, -1, -0.000196934, -0.591463, -0.105726, -0.814165, 0.591275, -0.105726, -0.814165, 0.956982, -0.105726, 0.310852, -0.000187337, -0.105726, 1.00603, -0.956982, -0.105726, 0.310852, -0.000187337, 0.105509, -1.00623, -0.956982, 0.105509, -0.311049, 0.956982, 0.105509, -0.311049, 0.591275, 0.105509, 0.813968, -0.591463, 0.105509, 0.813968, -0.000187337, 0.999979, -0.000196934)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wiqg8"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgenj"]
+albedo_texture = ExtResource("4_anfuc")
+normal_enabled = true
+normal_texture = ExtResource("5_physa")
+
 [node name="DTen" type="RigidBody3D"]
+mass = 0.9
 physics_material_override = ExtResource("1_ketk8")
 script = ExtResource("1_4pqe4")
 
 [node name="Dten" type="MeshInstance3D" parent="."]
+visible = false
 mesh = ExtResource("2_uyomb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_hvel5")
 
 [node name="face1" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.001948, -0.374373, -0.653152)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face2" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.60764, 0.372344, 0.228906)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face3" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.347365, -0.416815, 0.503613)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face4" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.390249, 0.377796, -0.519994)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face5" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.315333, -0.450091, 0.47509)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face6" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.367594, 0.39324, -0.513834)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face7" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.541926, -0.45, -0.180121)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face8" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.411169, 0.618889)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face9" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.610702, -0.380085, -0.175065)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
 
 [node name="face10" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.593972, 0.409685, 0.185216)
 shape = SubResource("SphereShape3D_wiqg8")
 target_position = Vector3(0, 0, 0)
+
+[node name="DiceD10" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.44318, 0.485966, -0.208634, -0.510342, 0.464376, -0.00240855, 0.138716, 0.155858, 0.657697, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tgenj")
+mesh = ExtResource("6_sdqt6")

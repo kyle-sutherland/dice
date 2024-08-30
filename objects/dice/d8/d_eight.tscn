@@ -1,19 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvji0mjdgloq8"]
+[gd_scene load_steps=10 format=3 uid="uid://dvji0mjdgloq8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bylsub7638q8c" path="res://models/d8.obj" id="1_lfp5a"]
 [ext_resource type="Script" path="res://objects/dice/d8/DEight.cs" id="1_ww274"]
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_wy84t"]
+[ext_resource type="Texture2D" uid="uid://cxlsad5ijl4si" path="res://models/Simple RPG Dice/Textures/T_Dice_A_2048.png" id="4_2tegq"]
+[ext_resource type="Texture2D" uid="uid://otq5d3b103f4" path="res://models/Simple RPG Dice/Textures/T_Dice_N_2048.png" id="5_l54gy"]
+[ext_resource type="ArrayMesh" uid="uid://cg1y5yuuhlpar" path="res://models/Simple RPG Dice/OBJ/Dice_D8.obj" id="6_74etl"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7h0g0"]
 points = PackedVector3Array(-0.000195742, 1, -1.0252e-05, 1, -0.000195742, -1.0252e-05, -0.000195742, -0.000195742, -1, -1, -0.000195742, -1.0252e-05, -0.000195742, -0.000195742, 0.999979, -0.000195742, -1, -1.0252e-05)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rv41q"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf5p7"]
+albedo_texture = ExtResource("4_2tegq")
+normal_enabled = true
+normal_texture = ExtResource("5_l54gy")
+
 [node name="DEight" type="RigidBody3D"]
+mass = 0.9
 physics_material_override = ExtResource("1_wy84t")
 script = ExtResource("1_ww274")
 
 [node name="D8" type="MeshInstance3D" parent="."]
+visible = false
 mesh = ExtResource("1_lfp5a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -58,3 +68,8 @@ target_position = Vector3(0, 0, 0)
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.301125, 0.396051, 0.364915)
 shape = SubResource("SphereShape3D_rv41q")
 target_position = Vector3(0, 0, 0)
+
+[node name="DiceD8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.247866, 0.346305, -0.422652, 0.487714, -0.349478, -0.00032686, -0.246368, -0.34342, -0.42587, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tf5p7")
+mesh = ExtResource("6_74etl")

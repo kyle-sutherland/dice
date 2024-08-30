@@ -20,6 +20,7 @@ normal_texture = ExtResource("5_lb4dk")
 [sub_resource type="SphereShape3D" id="SphereShape3D_6oygh"]
 
 [node name="DTwenty" type="RigidBody3D"]
+mass = 1.1
 physics_material_override = ExtResource("1_stvub")
 can_sleep = false
 script = ExtResource("2_1ccoi")

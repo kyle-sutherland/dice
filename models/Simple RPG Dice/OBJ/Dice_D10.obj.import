@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://divp2g5lp1380"
+path="res://.godot/imported/Dice_D10.obj-eb6a79868e86fbb97da909e1b9586f4a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Dice_D10.obj-eb6a79868e86fbb97da909e1b9586f4a.mesh"]
+
+source_file="res://models/Simple RPG Dice/OBJ/Dice_D10.obj"
+dest_files=["res://.godot/imported/Dice_D10.obj-eb6a79868e86fbb97da909e1b9586f4a.mesh", "res://.godot/imported/Dice_D10.obj-eb6a79868e86fbb97da909e1b9586f4a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
