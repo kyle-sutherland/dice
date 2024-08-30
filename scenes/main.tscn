@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkxcyjsfe1y02"]
+[gd_scene load_steps=31 format=3 uid="uid://bkxcyjsfe1y02"]
 
 [ext_resource type="Texture2D" uid="uid://b4fw3esbfywju" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_Color.png" id="1_s3xga"]
 [ext_resource type="Material" uid="uid://cm48tlxr8n62s" path="res://scenes/mainsk1.tres" id="1_tsulg"]
@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://b3mlcdpjenqtq" path="res://textures/Leather026_2K-PNG/Leather026_2K-PNG_Roughness.png" id="10_hgonr"]
 [ext_resource type="PackedScene" uid="uid://ckh4jq7q54ht5" path="res://objects/dice/d20/d_twenty.tscn" id="14_bb07c"]
 [ext_resource type="PackedScene" uid="uid://51mgb5qh7oba" path="res://objects/player/player.tscn" id="14_dr6u8"]
+[ext_resource type="PackedScene" uid="uid://cdhdbl4c0dp5q" path="res://objects/dice/d4/d_four.tscn" id="14_wdfae"]
+[ext_resource type="PackedScene" uid="uid://cshrqjhobm7ro" path="res://objects/dice/d6/d_six.tscn" id="15_dm8kc"]
+[ext_resource type="PackedScene" uid="uid://dvji0mjdgloq8" path="res://objects/dice/d8/d_eight.tscn" id="16_6cnwn"]
+[ext_resource type="PackedScene" uid="uid://qd20mngvn28k" path="res://objects/dice/d10/d_ten.tscn" id="17_rrld6"]
+[ext_resource type="PackedScene" uid="uid://dekb7okf34gs7" path="res://objects/dice/d12/d_twelve.tscn" id="18_xcwqp"]
 
 [sub_resource type="Sky" id="Sky_n2hnm"]
 sky_material = ExtResource("1_tsulg")
@@ -178,16 +183,17 @@ doppler_tracking = 2
 
 [node name="DiceThrower" parent="." instance=ExtResource("1_uvifp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.29724, 11.7453, 0.112258)
-DieScene = ExtResource("14_bb07c")
+DieScenes = Array[PackedScene]([ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")])
 
 [node name="DiceParent" type="Node3D" parent="." groups=["DiceParent"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)
 
 [node name="Marquee" type="Label3D" parent="." groups=["Marquee"]]
 unique_name_in_owner = true
-transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, -9.01204, 6.72132, -0.48366)
+transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, -9.01204, 12.0378, -0.48366)
+autowrap_mode = 3
 
 [node name="Player" parent="." instance=ExtResource("14_dr6u8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2826, 8.13037, 0)
+transform = Transform3D(-0.00929009, -0.206358, 0.978432, -0.00195925, 0.978477, 0.206349, -0.999955, 0, -0.00949444, 15.9963, 8.83819, 1.46077)
 
 [node name="DiceBox" type="Node3D" parent="."]
