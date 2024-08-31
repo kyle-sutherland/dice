@@ -33,8 +33,13 @@ tonemap_mode = 2
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
 glow_enabled = true
-glow_bloom = 0.1
+glow_normalized = true
+glow_bloom = 0.2
+fog_density = 0.001
+volumetric_fog_density = 0.01
+adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uer6s"]
 size = Vector3(1, 20, 22)
@@ -184,7 +189,6 @@ doppler_tracking = 2
 [node name="DiceThrower" parent="." instance=ExtResource("1_uvifp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.29724, 11.7453, 0.112258)
 DieScenes = Array[PackedScene]([ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")])
-AllCheck = 17
 
 [node name="DiceParent" type="Node3D" parent="." groups=["DiceParent"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)
