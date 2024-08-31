@@ -436,7 +436,7 @@ public partial class DiceThrower : Node3D
         }
         else if (dtype == "d10")
         {
-            dParent = d12Parent;
+            dParent = d10Parent;
         }
         else if (dtype == "d12")
         {
