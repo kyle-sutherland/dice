@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objects/dice_thrower/DiceThrower.cs" id="1_10mub"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_q5f3c"]
+[sub_resource type="SphereMesh" id="SphereMesh_hmx1w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fl8ca"]
 albedo_color = Color(1, 0, 0, 0.960784)
@@ -16,9 +16,9 @@ script = ExtResource("1_10mub")
 [node name="Aimer" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Aimer"]
-transform = Transform3D(-2.19542e-08, -0.754271, 2.19542e-08, 0, -3.29702e-08, -0.502253, 0.502253, -3.29702e-08, 9.59649e-16, 0, 0, 0)
+transform = Transform3D(-4.37114e-09, -0.1, 4.37114e-09, 0, -4.37114e-09, -0.1, 0.1, -4.37114e-09, 1.91069e-16, 0, 0, 0)
 gi_mode = 2
-mesh = SubResource("CylinderMesh_q5f3c")
+mesh = SubResource("SphereMesh_hmx1w")
 surface_material_override/0 = SubResource("StandardMaterial3D_fl8ca")
 
 [node name="D4Spawn" type="Node3D" parent="." groups=["D4Spawn"]]
@@ -32,3 +32,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fl8ca")
 [node name="D12Spawn" type="Node3D" parent="." groups=["D12Spawn"]]
 
 [node name="D20Spawn" type="Node3D" parent="." groups=["D20Spawn"]]
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 0.5

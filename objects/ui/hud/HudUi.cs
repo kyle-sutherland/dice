@@ -1,15 +1,15 @@
 using System;
 using Godot;
 
-public partial class Hud : CanvasLayer
+public partial class HudUi : Control
 {
     [Export]
-    public Label TotalLabel;
+    public Label diceLabel { get; private set; }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        TotalLabel = GetNode<Label>("VBoxContainer/HBoxContainer/Total");
+        diceLabel = GetNode<Label>("DiceLabel");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

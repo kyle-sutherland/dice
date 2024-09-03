@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://objects/dice/d12/DTwelve.cs" id="1_8ux34"]
 [ext_resource type="ArrayMesh" uid="uid://b66jbsffj0non" path="res://models/d12.obj" id="1_evcvv"]
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_u0xrl"]
-[ext_resource type="Texture2D" uid="uid://cxlsad5ijl4si" path="res://models/Simple RPG Dice/Textures/T_Dice_A_2048.png" id="4_vla1y"]
-[ext_resource type="Texture2D" uid="uid://otq5d3b103f4" path="res://models/Simple RPG Dice/Textures/T_Dice_N_2048.png" id="5_wlubf"]
+[ext_resource type="Texture2D" uid="uid://qjeody7635em" path="res://models/Simple RPG Dice/Textures/T_Dice_A_4096.png" id="4_b56i1"]
+[ext_resource type="Texture2D" uid="uid://bdmmkpfal2xje" path="res://models/Simple RPG Dice/Textures/T_Dice_N_4096.png" id="5_g8a4a"]
 [ext_resource type="ArrayMesh" uid="uid://4i6cuxarons4" path="res://models/Simple RPG Dice/OBJ/Dice_D12.obj" id="6_8l4yf"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7ga3q"]
@@ -13,9 +13,9 @@ points = PackedVector3Array(0.934144, 0.356787, -0.000182867, 0.934144, -0.35699
 [sub_resource type="SphereShape3D" id="SphereShape3D_di1gv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3n0e"]
-albedo_texture = ExtResource("4_vla1y")
+albedo_texture = ExtResource("4_b56i1")
 normal_enabled = true
-normal_texture = ExtResource("5_wlubf")
+normal_texture = ExtResource("5_g8a4a")
 
 [node name="DTwelve" type="RigidBody3D"]
 mass = 1.1

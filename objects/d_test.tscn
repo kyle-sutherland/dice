@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cshrqjhobm7ro"]
+[gd_scene load_steps=6 format=3 uid="uid://dcknfeesvux6b"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_eh4u7"]
-[ext_resource type="Script" path="res://objects/dice/d6/DSix.cs" id="1_y0yje"]
-[ext_resource type="PackedScene" uid="uid://ck7onql8etj8m" path="res://models/diedice-red/source/Dice.fbx" id="3_88hyc"]
+[ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_s0ckq"]
+[ext_resource type="Script" path="res://objects/dice/d6/DSix.cs" id="2_ldt4m"]
+[ext_resource type="PackedScene" uid="uid://ck7onql8etj8m" path="res://models/diedice-red/source/Dice.fbx" id="3_ai6m0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pyf8x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5dv68"]
 
 [node name="DSix" type="RigidBody3D"]
-physics_material_override = ExtResource("1_eh4u7")
-script = ExtResource("1_y0yje")
+physics_material_override = ExtResource("1_s0ckq")
+can_sleep = false
+freeze = true
+script = ExtResource("2_ldt4m")
 metadata/type = "d6"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -47,5 +49,5 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.8, 0)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(0, -0.5, 0)
 
-[node name="Root Scene" parent="." instance=ExtResource("3_88hyc")]
+[node name="Root Scene" parent="." instance=ExtResource("3_ai6m0")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
