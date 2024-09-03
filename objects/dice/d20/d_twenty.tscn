@@ -22,7 +22,6 @@ normal_texture = ExtResource("5_lb4dk")
 [node name="DTwenty" type="RigidBody3D"]
 mass = 1.1
 physics_material_override = ExtResource("1_stvub")
-can_sleep = false
 script = ExtResource("2_1ccoi")
 metadata/type = "d20"
 

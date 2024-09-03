@@ -187,8 +187,10 @@ transform = Transform3D(0.775871, 0.320249, -0.543567, 2.15842e-08, 0.861585, 0.
 doppler_tracking = 2
 
 [node name="DiceThrower" parent="." instance=ExtResource("1_uvifp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.29724, 11.7453, 0.112258)
-DieScenes = Array[PackedScene]([ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")])
+transform = Transform3D(0.999715, 0.0238738, 0, -0.0238738, 0.999715, 0, 0, 0, 1, 0.981961, 10.4309, -0.983984)
+Throw = false
+DieScenes = [ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")]
+nDice = PackedInt32Array(0, 18, 0, 0, 0, 0)
 
 [node name="DiceParent" type="Node3D" parent="." groups=["DiceParent"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)
@@ -198,7 +200,8 @@ unique_name_in_owner = true
 transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, -9.01204, 12.0378, -0.48366)
 autowrap_mode = 3
 
-[node name="Player" parent="." instance=ExtResource("14_dr6u8")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("14_dr6u8")]
 transform = Transform3D(-0.00929009, -0.206358, 0.978432, -0.00195925, 0.978477, 0.206349, -0.999955, 0, -0.00949444, 15.9963, 8.83819, 1.46077)
+motion_mode = 1
 
 [node name="DiceBox" type="Node3D" parent="."]

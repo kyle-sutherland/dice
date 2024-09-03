@@ -40,6 +40,9 @@ public partial class DiceThrower : Node3D
     public StringName Selectd20Action { get; private set; } = "Selectd20";
 
     [Export]
+    public StringName PlayerGroup { get; private set; } = "Player";
+
+    [Export]
     public StringName DiceParentGroup { get; private set; } = "DiceParent";
 
     [Export]
@@ -64,10 +67,18 @@ public partial class DiceThrower : Node3D
     public StringName MarqueeGroup { get; private set; } = "Marquee";
 
     [Export]
+    public bool Throw { get; private set; } = true;
+
+    [Export]
     public float LaunchForce { get; private set; } = 1000f;
 
     [Export]
-    public PackedScene[] DieScenes { get; private set; }
+    public PackedScene[] DieScenes { get; private set; } = new PackedScene[6];
+
+    public PackedScene[] ReadyDieScenes { get; private set; } = new PackedScene[100];
+
+    [Export]
+    public int[] nDice { get; private set; } = new int[6];
 
     public int SelectedDieIndex { get; private set; } = 0;
 
@@ -91,6 +102,8 @@ public partial class DiceThrower : Node3D
 
     [Export]
     public int AllCheck { get; private set; }
+
+    private Node Player;
 
     protected PackedScene SelectedDieScene { get; private set; }
 
@@ -135,9 +148,12 @@ public partial class DiceThrower : Node3D
     public int nD20Pass { get; private set; }
     public bool allPass { get; private set; }
 
+    public Timer Delay { get; private set; }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        Player = GetTree().GetFirstNodeInGroup(PlayerGroup);
         diceParent = GetTree().GetFirstNodeInGroup(DiceParentGroup);
         d4Parent = GetTree().GetFirstNodeInGroup(D4ParentGroup);
         d6Parent = GetTree().GetFirstNodeInGroup(D6ParentGroup);
@@ -145,10 +161,13 @@ public partial class DiceThrower : Node3D
         d10Parent = GetTree().GetFirstNodeInGroup(D10ParentGroup);
         d12Parent = GetTree().GetFirstNodeInGroup(D12ParentGroup);
         d20Parent = GetTree().GetFirstNodeInGroup(D20ParentGroup);
+        Delay = GetNode<Timer>("Delay");
 
         string marqueeNodePath = GetTree().GetFirstNodeInGroup(MarqueeGroup).GetPath();
         marquee = GetNodeOrNull<Label3D>(marqueeNodePath);
         SelectedDieIndex = 1;
+        ReadyDice();
+        GD.Print(ReadyDieScenes);
 
         if (diceParent == null)
         {
@@ -195,14 +214,23 @@ public partial class DiceThrower : Node3D
         {
             allPass = CheckAllDice(AllCheck);
         }
-        marquee.Text = CreateMessage();
+        string message = CreateMessage();
+        marquee.Text = message;
+        Player.GetNode<Label>("./Hud/DiceLabel").Text = message;
     }
 
     public override void _Input(InputEvent @event)
     {
         if (@event.IsActionPressed(ThrowAction))
         {
-            ThrowDice(SelectedDieScene);
+            if (Throw)
+            {
+                ThrowDice(ReadyDieScenes);
+            }
+            else
+            {
+                DropDice(ReadyDieScenes);
+            }
         }
         else if (@event.IsActionPressed(ClearAction))
         {
@@ -258,58 +286,204 @@ public partial class DiceThrower : Node3D
         }
     }
 
-    public void ThrowDice(PackedScene diceToThrow)
+    public void ReadyDice()
     {
-        Die dieInstance = diceToThrow.Instantiate<Die>();
-        string dieInstanceTypeName = dieInstance.GetType().ToString();
-        var random = new RandomNumberGenerator();
-        float aimX = random.RandfRange(-0.2f, -0.7f);
-        float aimY = random.RandfRange(-0.2f, 0.2f);
-        float aimZ = random.RandfRange(-0.2f, 0.2f);
-        float torqueX;
-        float torqueY;
-        float torqueZ;
-        aimDirection = new Vector3(aimX, aimY, aimZ);
-        LaunchForce = random.RandfRange(1200f, 1800f);
-        if (dieInstanceTypeName == "DFour")
+        for (int i = 0; i < nDice.GetLength(0) - 1; i++)
         {
-            d4Parent.AddChild(dieInstance);
+            int n = nDice[i];
+            for (int j = 0; j < n; j++)
+            {
+                ReadyDieScenes.SetValue(DieScenes[i], j);
+            }
         }
-        else if (dieInstanceTypeName == "DSix")
+    }
+
+    public int GetNAllDice()
+    {
+        int n = 0;
+        foreach (int i in nDice)
         {
-            d6Parent.AddChild(dieInstance);
+            n += i;
         }
-        else if (dieInstanceTypeName == "DEight")
+        return n;
+    }
+
+    public async void ThrowDice(PackedScene[] diceToThrow)
+    {
+        float positionZOffset = 1.8f;
+        float positionYOffset = 1.8f;
+        int positionOffsetCount = 0;
+        int rowCount = 0;
+        int nAllDice = GetNAllDice();
+
+        for (int i = 0; i < nAllDice; i++)
         {
-            d8Parent.AddChild(dieInstance);
+            PackedScene dieToThrow = diceToThrow[i];
+            if (dieToThrow != null)
+            {
+                Vector3 position = GlobalPosition;
+                position.Z = position.Z + positionZOffset - positionZOffset * positionOffsetCount;
+                position.Y = position.Y + positionYOffset - positionYOffset * rowCount;
+                if (positionOffsetCount > 1)
+                {
+                    positionOffsetCount = 0;
+                    if (rowCount > 1)
+                    {
+                        rowCount = 0;
+                    }
+                    else
+                        rowCount++;
+                }
+                else
+                {
+                    positionOffsetCount++;
+                }
+                Die dieInstance = dieToThrow.Instantiate<Die>();
+                string dieInstanceTypeName = dieInstance.GetType().ToString();
+                var random = new RandomNumberGenerator();
+                float aimX = random.RandfRange(-0.2f, -0.7f);
+                float aimY = random.RandfRange(-0.2f, 0.2f);
+                float aimZ = random.RandfRange(-0.2f, 0.2f);
+                float torqueX;
+                float torqueY;
+                float torqueZ;
+                aimDirection = new Vector3(aimX, aimY, aimZ);
+                LaunchForce = random.RandfRange(1200f, 1800f);
+                if (dieInstanceTypeName == "DFour")
+                {
+                    d4Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DSix")
+                {
+                    d6Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DEight")
+                {
+                    d8Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DTen")
+                {
+                    d10Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DTwelve")
+                {
+                    d12Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DTwenty")
+                {
+                    d20Parent.AddChild(dieInstance);
+                }
+                // else
+                // {
+                //     diceParent.AddChild(dieInstance);
+                // }
+                dieInstance.GlobalPosition = position;
+                if (dieInstanceTypeName != "DFour")
+                {
+                    torqueX = random.RandfRange(-140f, 140f);
+                    torqueY = random.RandfRange(-140f, 140f);
+                    torqueZ = random.RandfRange(-140f, 140f);
+                    Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
+                    dieInstance.ApplyTorque(launchTorque);
+                }
+                Vector3 launchVector = aimDirection * LaunchForce;
+                dieInstance.ApplyForce(launchVector);
+                if ((i + 1) % 9 == 0)
+                {
+                    await ToSignal(Delay, "timeout");
+                }
+            }
         }
-        else if (dieInstanceTypeName == "DTen")
+    }
+
+    public async void DropDice(PackedScene[] diceToThrow)
+    {
+        float positionZOffset = 1.8f;
+        float positionXOffset = 1.8f;
+        int positionOffsetCount = 0;
+        int rowCount = 0;
+        int nAllDice = GetNAllDice();
+
+        Delay.Start();
+        for (int i = 0; i < nAllDice; i++)
         {
-            d10Parent.AddChild(dieInstance);
+            PackedScene dieToThrow = diceToThrow[i];
+            if (dieToThrow != null)
+            {
+                Vector3 position = GlobalPosition;
+                position.Z = position.Z + positionZOffset - positionZOffset * positionOffsetCount;
+                position.X = position.X + positionXOffset - positionXOffset * rowCount;
+                if (positionOffsetCount > 1)
+                {
+                    positionOffsetCount = 0;
+                    if (rowCount > 1)
+                    {
+                        rowCount = 0;
+                    }
+                    else
+                        rowCount++;
+                }
+                else
+                {
+                    positionOffsetCount++;
+                }
+                Die dieInstance = dieToThrow.Instantiate<Die>();
+                string dieInstanceTypeName = dieInstance.GetType().ToString();
+                var random = new RandomNumberGenerator();
+                float aimX = random.RandfRange(-0.2f, -0.7f);
+                float aimY = random.RandfRange(-0.2f, 0.2f);
+                float aimZ = random.RandfRange(-0.2f, 0.2f);
+                float torqueX;
+                float torqueY;
+                float torqueZ;
+                aimDirection = new Vector3(aimX, aimY, aimZ);
+                LaunchForce = random.RandfRange(1200f, 1800f);
+                if (dieInstanceTypeName == "DFour")
+                {
+                    d4Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DSix")
+                {
+                    d6Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DEight")
+                {
+                    d8Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DTen")
+                {
+                    d10Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DTwelve")
+                {
+                    d12Parent.AddChild(dieInstance);
+                }
+                else if (dieInstanceTypeName == "DTwenty")
+                {
+                    d20Parent.AddChild(dieInstance);
+                }
+                // else
+                // {
+                //     diceParent.AddChild(dieInstance);
+                // }
+                dieInstance.GlobalPosition = position;
+                if (dieInstanceTypeName != "DFour")
+                {
+                    torqueX = random.RandfRange(-140f, 140f);
+                    torqueY = random.RandfRange(-140f, 140f);
+                    torqueZ = random.RandfRange(-140f, 140f);
+                    Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
+                    // dieInstance.ApplyTorque(launchTorque);
+                }
+                Vector3 launchVector = aimDirection * LaunchForce;
+                // dieInstance.ApplyForce(launchVector);
+                if ((i + 1) % 9 == 0)
+                {
+                    await ToSignal(Delay, "timeout");
+                }
+            }
         }
-        else if (dieInstanceTypeName == "DTwelve")
-        {
-            d12Parent.AddChild(dieInstance);
-        }
-        else if (dieInstanceTypeName == "DTwenty")
-        {
-            d20Parent.AddChild(dieInstance);
-        }
-        // else
-        // {
-        //     diceParent.AddChild(dieInstance);
-        // }
-        dieInstance.GlobalPosition = GlobalPosition;
-        if (dieInstanceTypeName != "DFour")
-        {
-            torqueX = random.RandfRange(-140f, 140f);
-            torqueY = random.RandfRange(-140f, 140f);
-            torqueZ = random.RandfRange(-140f, 140f);
-            Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
-            dieInstance.ApplyTorque(launchTorque);
-        }
-        Vector3 launchVector = aimDirection * LaunchForce;
-        dieInstance.ApplyForce(launchVector);
+        Delay.Stop();
     }
 
     public string CreateMessage()
