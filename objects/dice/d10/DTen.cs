@@ -21,7 +21,14 @@ public partial class DTen : Die
                     var colliderName = collider.GetMeta("Name");
                     if (colliderName.ToString() == "floor")
                     {
-                        Value = 8 - i;
+                        if (i == 9)
+                        {
+                            Value = 9;
+                        }
+                        else
+                        {
+                            Value = 8 - i;
+                        }
                     }
                 }
             }

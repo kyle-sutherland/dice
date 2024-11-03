@@ -1,7 +1,7 @@
 public partial class DFour : Die
 {
-    public DFour()
-    {
-        n = 4;
-    }
+	public DFour()
+	{
+		n = 4;
+	}
 }

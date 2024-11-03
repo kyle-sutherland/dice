@@ -42,7 +42,7 @@ volumetric_fog_density = 0.01
 adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uer6s"]
-size = Vector3(1, 20, 22)
+size = Vector3(1, 40, 22)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rr752"]
 
@@ -67,10 +67,10 @@ texture_filter = 4
 grow_amount = 1.088
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3fxk"]
-size = Vector3(20, 20, 1)
+size = Vector3(20, 40, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8idgy"]
-size = Vector3(20, 20, 1)
+size = Vector3(20, 40, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhfvc"]
 rough = true
@@ -98,7 +98,7 @@ heightmap_texture = ExtResource("8_7a6ir")
 uv1_triplanar = true
 uv1_triplanar_sharpness = 0.42045
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" groups=["World"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0667973, -0.0298014, 0.0355034)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -182,15 +182,24 @@ mesh = SubResource("BoxMesh_rr752")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ygi7p")
 
+[node name="ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.6354, 0)
+rotation_edit_mode = 1
+physics_material_override = SubResource("PhysicsMaterial_nhfvc")
+metadata/Name = "floor"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling"]
+rotation_edit_mode = 1
+shape = SubResource("BoxShape3D_x0m64")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.775871, 0.320249, -0.543567, 2.15842e-08, 0.861585, 0.507614, 0.630892, -0.393842, 0.668478, -15.7019, 10.2437, 16.1924)
 doppler_tracking = 2
 
-[node name="DiceThrower" parent="." instance=ExtResource("1_uvifp")]
-transform = Transform3D(0.999715, 0.0238738, 0, -0.0238738, 0.999715, 0, 0, 0, 1, 0.981961, 10.4309, -0.983984)
-Throw = false
+[node name="DiceThrower" parent="." groups=["DiceThrower"] instance=ExtResource("1_uvifp")]
+transform = Transform3D(0.999715, 0.0238738, 0, -0.0238738, 0.999715, 0, 0, 0, 1, 8.40505, 10.4309, -0.983984)
 DieScenes = [ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")]
-nDice = PackedInt32Array(0, 18, 0, 0, 0, 0)
+nDice = PackedInt32Array(0, 0, 0, 10, 0, 0)
 
 [node name="DiceParent" type="Node3D" parent="." groups=["DiceParent"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)

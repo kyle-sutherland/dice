@@ -166,8 +166,6 @@ public partial class DiceThrower : Node3D
         string marqueeNodePath = GetTree().GetFirstNodeInGroup(MarqueeGroup).GetPath();
         marquee = GetNodeOrNull<Label3D>(marqueeNodePath);
         SelectedDieIndex = 1;
-        ReadyDice();
-        GD.Print(ReadyDieScenes);
 
         if (diceParent == null)
         {
@@ -223,14 +221,8 @@ public partial class DiceThrower : Node3D
     {
         if (@event.IsActionPressed(ThrowAction))
         {
-            if (Throw)
-            {
-                ThrowDice(ReadyDieScenes);
-            }
-            else
-            {
-                DropDice(ReadyDieScenes);
-            }
+            ReadyDice();
+            RollDice();
         }
         else if (@event.IsActionPressed(ClearAction))
         {
@@ -286,16 +278,31 @@ public partial class DiceThrower : Node3D
         }
     }
 
+    public void RollDice()
+    {
+        if (Throw)
+        {
+            ThrowDice(ReadyDieScenes);
+        }
+        else
+        {
+            DropDice(ReadyDieScenes);
+        }
+    }
+
     public void ReadyDice()
     {
-        for (int i = 0; i < nDice.GetLength(0) - 1; i++)
+        int nSum = 0;
+        for (int i = 0; i < nDice.GetLength(0); i++)
         {
-            int n = nDice[i];
+            int n = (int)nDice.GetValue(i);
             for (int j = 0; j < n; j++)
             {
-                ReadyDieScenes.SetValue(DieScenes[i], j);
+                ReadyDieScenes.SetValue(DieScenes.GetValue(i), j + nSum);
             }
+            nSum += n;
         }
+        GD.Print(ReadyDieScenes);
     }
 
     public int GetNAllDice()
@@ -318,6 +325,7 @@ public partial class DiceThrower : Node3D
 
         for (int i = 0; i < nAllDice; i++)
         {
+            Delay.Start();
             PackedScene dieToThrow = diceToThrow[i];
             if (dieToThrow != null)
             {
@@ -332,7 +340,9 @@ public partial class DiceThrower : Node3D
                         rowCount = 0;
                     }
                     else
+                    {
                         rowCount++;
+                    }
                 }
                 else
                 {
@@ -340,7 +350,7 @@ public partial class DiceThrower : Node3D
                 }
                 Die dieInstance = dieToThrow.Instantiate<Die>();
                 string dieInstanceTypeName = dieInstance.GetType().ToString();
-                var random = new RandomNumberGenerator();
+                RandomNumberGenerator random = new();
                 float aimX = random.RandfRange(-0.2f, -0.7f);
                 float aimY = random.RandfRange(-0.2f, 0.2f);
                 float aimZ = random.RandfRange(-0.2f, 0.2f);
@@ -383,7 +393,7 @@ public partial class DiceThrower : Node3D
                     torqueX = random.RandfRange(-140f, 140f);
                     torqueY = random.RandfRange(-140f, 140f);
                     torqueZ = random.RandfRange(-140f, 140f);
-                    Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
+                    Vector3 launchTorque = new(torqueX, torqueY, torqueZ);
                     dieInstance.ApplyTorque(launchTorque);
                 }
                 Vector3 launchVector = aimDirection * LaunchForce;
@@ -394,6 +404,7 @@ public partial class DiceThrower : Node3D
                 }
             }
         }
+        Delay.Stop();
     }
 
     public async void DropDice(PackedScene[] diceToThrow)
@@ -421,7 +432,9 @@ public partial class DiceThrower : Node3D
                         rowCount = 0;
                     }
                     else
+                    {
                         rowCount++;
+                    }
                 }
                 else
                 {
@@ -429,15 +442,10 @@ public partial class DiceThrower : Node3D
                 }
                 Die dieInstance = dieToThrow.Instantiate<Die>();
                 string dieInstanceTypeName = dieInstance.GetType().ToString();
-                var random = new RandomNumberGenerator();
-                float aimX = random.RandfRange(-0.2f, -0.7f);
-                float aimY = random.RandfRange(-0.2f, 0.2f);
-                float aimZ = random.RandfRange(-0.2f, 0.2f);
+                RandomNumberGenerator random = new();
                 float torqueX;
                 float torqueY;
                 float torqueZ;
-                aimDirection = new Vector3(aimX, aimY, aimZ);
-                LaunchForce = random.RandfRange(1200f, 1800f);
                 if (dieInstanceTypeName == "DFour")
                 {
                     d4Parent.AddChild(dieInstance);
@@ -467,16 +475,11 @@ public partial class DiceThrower : Node3D
                 //     diceParent.AddChild(dieInstance);
                 // }
                 dieInstance.GlobalPosition = position;
-                if (dieInstanceTypeName != "DFour")
-                {
-                    torqueX = random.RandfRange(-140f, 140f);
-                    torqueY = random.RandfRange(-140f, 140f);
-                    torqueZ = random.RandfRange(-140f, 140f);
-                    Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
-                    // dieInstance.ApplyTorque(launchTorque);
-                }
-                Vector3 launchVector = aimDirection * LaunchForce;
-                // dieInstance.ApplyForce(launchVector);
+                torqueX = random.RandfRange(-70f, 70f);
+                torqueY = random.RandfRange(-70f, 70f);
+                torqueZ = random.RandfRange(-70f, 70f);
+                Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
+                dieInstance.ApplyTorque(launchTorque);
                 if ((i + 1) % 9 == 0)
                 {
                     await ToSignal(Delay, "timeout");

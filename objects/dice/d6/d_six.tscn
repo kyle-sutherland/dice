@@ -9,43 +9,43 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_5dv68"]
 
 [node name="DSix" type="RigidBody3D"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 physics_material_override = ExtResource("1_eh4u7")
 script = ExtResource("1_y0yje")
 metadata/type = "d6"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_pyf8x")
 
 [node name="face1" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.8, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(0, 0.5, 0)
 
 [node name="face2" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.8, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5, 0, 0)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(0.5, 0, 0)
 
 [node name="face3" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.8)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, -0.5)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(0, 0, -0.5)
 
 [node name="face4" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.8)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.5)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(0, 0, 0.5)
 
 [node name="face5" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.8, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.5, 0, 0)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(-0.5, 0, 0)
 
 [node name="face6" type="ShapeCast3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.8, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.5, 0)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(0, -0.5, 0)
 
 [node name="Root Scene" parent="." instance=ExtResource("3_88hyc")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
