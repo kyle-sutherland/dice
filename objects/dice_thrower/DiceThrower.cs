@@ -4,69 +4,6 @@ using Godot;
 public partial class DiceThrower : Node3D
 {
     [Export]
-    public Node3D Aimer { get; private set; }
-
-    [Export]
-    public StringName ThrowAction { get; private set; } = "Throw";
-
-    [Export]
-    public StringName ClearAction { get; private set; } = "Clear";
-
-    [Export]
-    public StringName CountAction { get; private set; } = "Count";
-
-    [Export]
-    public StringName NextDieAction { get; private set; } = "NextDie";
-
-    [Export]
-    public StringName PrevDieAction { get; private set; } = "PrevDie";
-
-    [Export]
-    public StringName Selectd4Action { get; private set; } = "Selectd4";
-
-    [Export]
-    public StringName Selectd6Action { get; private set; } = "Selectd6";
-
-    [Export]
-    public StringName Selectd8Action { get; private set; } = "Selectd8";
-
-    [Export]
-    public StringName Selectd10Action { get; private set; } = "Selectd10";
-
-    [Export]
-    public StringName Selectd12Action { get; private set; } = "Selectd12";
-
-    [Export]
-    public StringName Selectd20Action { get; private set; } = "Selectd20";
-
-    [Export]
-    public StringName PlayerGroup { get; private set; } = "Player";
-
-    [Export]
-    public StringName DiceParentGroup { get; private set; } = "DiceParent";
-
-    [Export]
-    public StringName D4ParentGroup { get; private set; } = "D4Spawn";
-
-    [Export]
-    public StringName D6ParentGroup { get; private set; } = "D6Spawn";
-
-    [Export]
-    public StringName D8ParentGroup { get; private set; } = "D8Spawn";
-
-    [Export]
-    public StringName D10ParentGroup { get; private set; } = "D10Spawn";
-
-    [Export]
-    public StringName D12ParentGroup { get; private set; } = "D12Spawn";
-
-    [Export]
-    public StringName D20ParentGroup { get; private set; } = "D20Spawn";
-
-    [Export]
-    public StringName MarqueeGroup { get; private set; } = "Marquee";
-
-    [Export]
     public bool Throw { get; private set; } = true;
 
     [Export]
@@ -78,7 +15,7 @@ public partial class DiceThrower : Node3D
     public PackedScene[] ReadyDieScenes { get; private set; } = new PackedScene[100];
 
     [Export]
-    public int[] nDice { get; private set; } = new int[6];
+    public int[] NDice { get; private set; } = new int[6];
 
     public int SelectedDieIndex { get; private set; } = 0;
 
@@ -125,51 +62,56 @@ public partial class DiceThrower : Node3D
 
     private Label3D marquee;
 
-    public int d4Total { get; private set; }
+    public int D4Total { get; private set; }
 
-    public int d6Total { get; private set; }
+    public int D6Total { get; private set; }
 
-    public int d8Total { get; private set; }
+    public int D8Total { get; private set; }
 
-    public int d10Total { get; private set; }
+    public int D10Total { get; private set; }
 
-    public int d12Total { get; private set; }
+    public int D12Total { get; private set; }
 
-    public int d20Total { get; private set; }
+    public int D20Total { get; private set; }
 
-    public int allTotal { get; private set; }
+    public int AllTotal { get; private set; }
 
-    public int nD4Pass { get; private set; }
+    public int ND4Pass { get; private set; }
 
-    public int nD6Pass { get; private set; }
-    public int nD8Pass { get; private set; }
-    public int nD10Pass { get; private set; }
-    public int nD12Pass { get; private set; }
-    public int nD20Pass { get; private set; }
-    public bool allPass { get; private set; }
+    public int ND6Pass { get; private set; }
+
+    public int ND8Pass { get; private set; }
+
+    public int ND10Pass { get; private set; }
+
+    public int ND12Pass { get; private set; }
+
+    public int ND20Pass { get; private set; }
+
+    public bool AllPass { get; private set; }
 
     public Timer Delay { get; private set; }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Player = GetTree().GetFirstNodeInGroup(PlayerGroup);
-        diceParent = GetTree().GetFirstNodeInGroup(DiceParentGroup);
-        d4Parent = GetTree().GetFirstNodeInGroup(D4ParentGroup);
-        d6Parent = GetTree().GetFirstNodeInGroup(D6ParentGroup);
-        d8Parent = GetTree().GetFirstNodeInGroup(D8ParentGroup);
-        d10Parent = GetTree().GetFirstNodeInGroup(D10ParentGroup);
-        d12Parent = GetTree().GetFirstNodeInGroup(D12ParentGroup);
-        d20Parent = GetTree().GetFirstNodeInGroup(D20ParentGroup);
+        Player = GetTree().GetFirstNodeInGroup(Groups.PlayerGroup);
+        diceParent = GetTree().GetFirstNodeInGroup(Groups.DiceParentGroup);
+        d4Parent = GetTree().GetFirstNodeInGroup(Groups.D4ParentGroup);
+        d6Parent = GetTree().GetFirstNodeInGroup(Groups.D6ParentGroup);
+        d8Parent = GetTree().GetFirstNodeInGroup(Groups.D8ParentGroup);
+        d10Parent = GetTree().GetFirstNodeInGroup(Groups.D10ParentGroup);
+        d12Parent = GetTree().GetFirstNodeInGroup(Groups.D12ParentGroup);
+        d20Parent = GetTree().GetFirstNodeInGroup(Groups.D20ParentGroup);
         Delay = GetNode<Timer>("Delay");
 
-        string marqueeNodePath = GetTree().GetFirstNodeInGroup(MarqueeGroup).GetPath();
+        string marqueeNodePath = GetTree().GetFirstNodeInGroup(Groups.MarqueeGroup).GetPath();
         marquee = GetNodeOrNull<Label3D>(marqueeNodePath);
         SelectedDieIndex = 1;
 
         if (diceParent == null)
         {
-            GD.PushWarning("No dice parent found in group " + DiceParentGroup);
+            GD.PushWarning("No dice parent found in group " + Groups.DiceParentGroup);
         }
     }
 
@@ -177,40 +119,40 @@ public partial class DiceThrower : Node3D
     public override void _Process(double delta)
     {
         SelectedDieScene = DieScenes[SelectedDieIndex];
-        d4Total = CountDice("d4");
-        d6Total = CountDice("d6");
-        d8Total = CountDice("d8");
-        d10Total = CountDice("d10");
-        d12Total = CountDice("d12");
-        d20Total = CountDice("d20");
-        allTotal = d4Total + d6Total + d8Total + d10Total + d12Total + d20Total;
+        D4Total = CountDice("d4");
+        D6Total = CountDice("d6");
+        D8Total = CountDice("d8");
+        D10Total = CountDice("d10");
+        D12Total = CountDice("d12");
+        D20Total = CountDice("d20");
+        AllTotal = D4Total + D6Total + D8Total + D10Total + D12Total + D20Total;
         if (D4Check != 0)
         {
-            nD4Pass = CheckDice(D4Check, "d4");
+            ND4Pass = CheckDice(D4Check, "d4");
         }
         if (D6Check != 0)
         {
-            nD6Pass = CheckDice(D6Check, "d6");
+            ND6Pass = CheckDice(D6Check, "d6");
         }
         if (D8Check != 0)
         {
-            nD8Pass = CheckDice(D8Check, "d8");
+            ND8Pass = CheckDice(D8Check, "d8");
         }
         if (D10Check != 0)
         {
-            nD10Pass = CheckDice(D10Check, "d10");
+            ND10Pass = CheckDice(D10Check, "d10");
         }
         if (D12Check != 0)
         {
-            nD12Pass = CheckDice(D12Check, "d12");
+            ND12Pass = CheckDice(D12Check, "d12");
         }
         if (D20Check != 0)
         {
-            nD20Pass = CheckDice(D20Check, "d20");
+            ND20Pass = CheckDice(D20Check, "d20");
         }
         if (AllCheck != 0)
         {
-            allPass = CheckAllDice(AllCheck);
+            AllPass = CheckAllDice(AllCheck);
         }
         string message = CreateMessage();
         marquee.Text = message;
@@ -219,17 +161,17 @@ public partial class DiceThrower : Node3D
 
     public override void _Input(InputEvent @event)
     {
-        if (@event.IsActionPressed(ThrowAction))
+        if (@event.IsActionPressed(Actions.ThrowAction))
         {
             ReadyDice();
             RollDice();
         }
-        else if (@event.IsActionPressed(ClearAction))
+        else if (@event.IsActionPressed(Actions.ClearAction))
         {
             ClearDice();
         }
-        else if (@event.IsActionPressed(CountAction)) { }
-        else if (@event.IsActionPressed(NextDieAction))
+        else if (@event.IsActionPressed(Actions.CountAction)) { }
+        else if (@event.IsActionPressed(Actions.NextDieAction))
         {
             if (SelectedDieIndex == DieScenes.GetLength(0))
             {
@@ -242,7 +184,7 @@ public partial class DiceThrower : Node3D
                 SelectedDieScene = DieScenes[SelectedDieIndex];
             }
         }
-        else if (@event.IsActionPressed(PrevDieAction))
+        else if (@event.IsActionPressed(Actions.PrevDieAction))
         {
             if (SelectedDieIndex == 0)
             {
@@ -252,27 +194,27 @@ public partial class DiceThrower : Node3D
             SelectedDieIndex--;
             SelectedDieScene = DieScenes[SelectedDieIndex];
         }
-        else if (@event.IsActionPressed(Selectd4Action))
+        else if (@event.IsActionPressed(Actions.Selectd4Action))
         {
             SelectedDieIndex = 0;
         }
-        else if (@event.IsActionPressed(Selectd6Action))
+        else if (@event.IsActionPressed(Actions.Selectd6Action))
         {
             SelectedDieIndex = 1;
         }
-        else if (@event.IsActionPressed(Selectd8Action))
+        else if (@event.IsActionPressed(Actions.Selectd8Action))
         {
             SelectedDieIndex = 2;
         }
-        else if (@event.IsActionPressed(Selectd10Action))
+        else if (@event.IsActionPressed(Actions.Selectd10Action))
         {
             SelectedDieIndex = 3;
         }
-        else if (@event.IsActionPressed(Selectd12Action))
+        else if (@event.IsActionPressed(Actions.Selectd12Action))
         {
             SelectedDieIndex = 4;
         }
-        else if (@event.IsActionPressed(Selectd20Action))
+        else if (@event.IsActionPressed(Actions.Selectd20Action))
         {
             SelectedDieIndex = 5;
         }
@@ -293,9 +235,9 @@ public partial class DiceThrower : Node3D
     public void ReadyDice()
     {
         int nSum = 0;
-        for (int i = 0; i < nDice.GetLength(0); i++)
+        for (int i = 0; i < NDice.GetLength(0); i++)
         {
-            int n = (int)nDice.GetValue(i);
+            int n = (int)NDice.GetValue(i);
             for (int j = 0; j < n; j++)
             {
                 ReadyDieScenes.SetValue(DieScenes.GetValue(i), j + nSum);
@@ -308,7 +250,7 @@ public partial class DiceThrower : Node3D
     public int GetNAllDice()
     {
         int n = 0;
-        foreach (int i in nDice)
+        foreach (int i in NDice)
         {
             n += i;
         }
@@ -330,8 +272,8 @@ public partial class DiceThrower : Node3D
             if (dieToThrow != null)
             {
                 Vector3 position = GlobalPosition;
-                position.Z = position.Z + positionZOffset - positionZOffset * positionOffsetCount;
-                position.Y = position.Y + positionYOffset - positionYOffset * rowCount;
+                position.Z = position.Z + positionZOffset - (positionZOffset * positionOffsetCount);
+                position.Y = position.Y + positionYOffset - (positionYOffset * rowCount);
                 if (positionOffsetCount > 1)
                 {
                     positionOffsetCount = 0;
@@ -422,8 +364,8 @@ public partial class DiceThrower : Node3D
             if (dieToThrow != null)
             {
                 Vector3 position = GlobalPosition;
-                position.Z = position.Z + positionZOffset - positionZOffset * positionOffsetCount;
-                position.X = position.X + positionXOffset - positionXOffset * rowCount;
+                position.Z = position.Z + positionZOffset - (positionZOffset * positionOffsetCount);
+                position.X = position.X + positionXOffset - (positionXOffset * rowCount);
                 if (positionOffsetCount > 1)
                 {
                     positionOffsetCount = 0;
@@ -478,7 +420,7 @@ public partial class DiceThrower : Node3D
                 torqueX = random.RandfRange(-70f, 70f);
                 torqueY = random.RandfRange(-70f, 70f);
                 torqueZ = random.RandfRange(-70f, 70f);
-                Vector3 launchTorque = new Vector3(torqueX, torqueY, torqueZ);
+                Vector3 launchTorque = new(torqueX, torqueY, torqueZ);
                 dieInstance.ApplyTorque(launchTorque);
                 if ((i + 1) % 9 == 0)
                 {
@@ -494,65 +436,56 @@ public partial class DiceThrower : Node3D
         string message = "";
         if (d4Parent.GetChildCount() != 0)
         {
-            message += $"{d4Parent.GetChildCount()}d4: {d4Total}\n";
+            message += $"{d4Parent.GetChildCount()}d4: {D4Total}\n";
         }
         if (d6Parent.GetChildCount() != 0)
         {
-            message += $"{d6Parent.GetChildCount()}d6: {d6Total}\n";
+            message += $"{d6Parent.GetChildCount()}d6: {D6Total}\n";
         }
         if (d8Parent.GetChildCount() != 0)
         {
-            message += $"{d8Parent.GetChildCount()}d8: {d8Total}\n";
+            message += $"{d8Parent.GetChildCount()}d8: {D8Total}\n";
         }
         if (d10Parent.GetChildCount() != 0)
         {
-            message += $"{d10Parent.GetChildCount()}d10: {d10Total}\n";
+            message += $"{d10Parent.GetChildCount()}d10: {D10Total}\n";
         }
         if (d12Parent.GetChildCount() != 0)
         {
-            message += $"{d12Parent.GetChildCount()}d12: {d12Total}\n";
+            message += $"{d12Parent.GetChildCount()}d12: {D12Total}\n";
         }
         if (d20Parent.GetChildCount() != 0)
         {
-            message += $"{d20Parent.GetChildCount()}d20: {d20Total}\n";
+            message += $"{d20Parent.GetChildCount()}d20: {D20Total}\n";
         }
-        message += $"all: {allTotal}\n";
+        message += $"all: {AllTotal}\n";
         if (D4Check != 0)
         {
-            message += $"d4 Pass: {nD4Pass}\n";
+            message += $"d4 Pass: {ND4Pass}\n";
         }
         if (D6Check != 0)
         {
-            message += $"d6 Pass: {nD6Pass}\n";
+            message += $"d6 Pass: {ND6Pass}\n";
         }
         if (D8Check != 0)
         {
-            message += $"d8 Pass: {nD8Pass}\n";
+            message += $"d8 Pass: {ND8Pass}\n";
         }
         if (D10Check != 0)
         {
-            message += $"d10 Pass: {nD10Pass}\n";
+            message += $"d10 Pass: {ND10Pass}\n";
         }
         if (D12Check != 0)
         {
-            message += $"d12 Pass: {nD12Pass}\n";
+            message += $"d12 Pass: {ND12Pass}\n";
         }
         if (D20Check != 0)
         {
-            message += $"d20 Pass: {nD20Pass}\n";
+            message += $"d20 Pass: {ND20Pass}\n";
         }
         if (AllCheck != 0)
         {
-            string pass;
-            if (allPass)
-            {
-                pass = "pass";
-            }
-            else
-            {
-                pass = "fail";
-            }
-
+            string pass = AllPass ? "pass" : "fail";
             message += $"check: {AllCheck}, {pass}\n";
         }
         return message;
@@ -560,7 +493,7 @@ public partial class DiceThrower : Node3D
 
     public void ClearDice()
     {
-        var dice =
+        Godot.Collections.Array<Node> dice =
             d4Parent.GetChildren()
             + d6Parent.GetChildren()
             + d8Parent.GetChildren()
@@ -573,26 +506,13 @@ public partial class DiceThrower : Node3D
         }
     }
 
-    public int CountDice(Die[] dice)
+    public static int CountDice(Die[] dice)
     {
         int total = 0;
         foreach (Die die in dice)
         {
             total += die.Value;
         }
-        return total;
-    }
-
-    public int CountAllDice()
-    {
-        int total = 0;
-        total = CountDice("d4");
-        total = CountDice("d6");
-        total = CountDice("d8");
-        total = CountDice("d10");
-        total = CountDice("d12");
-        total = CountDice("d20");
-
         return total;
     }
 
@@ -623,7 +543,7 @@ public partial class DiceThrower : Node3D
         {
             dParent = d20Parent;
         }
-        int v = 0;
+        int v;
         int total = 0;
         for (int i = 0; i < dParent.GetChildCount(); i++)
         {
@@ -662,7 +582,7 @@ public partial class DiceThrower : Node3D
         {
             dParent = d20Parent;
         }
-        int v = 0;
+        int v;
         int n = 0;
         for (int i = 0; i < dParent.GetChildCount(); i++)
         {
@@ -680,7 +600,7 @@ public partial class DiceThrower : Node3D
     public bool CheckAllDice(int check)
     {
         bool pass = false;
-        if (allTotal >= check)
+        if (AllTotal >= check)
         {
             pass = true;
         }
