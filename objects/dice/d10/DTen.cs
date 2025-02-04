@@ -2,16 +2,18 @@ using Godot;
 
 public partial class DTen : Die
 {
-    DTen()
+    private DTen()
     {
-        n = 10;
+        N = 10;
     }
 
+    //
+    //CheckValue override requires different logic for checking value of ten sided die
     public override void CheckValue()
     {
-        for (int i = 0; i < shapecasts.Length; i++)
+        for (int i = 0; i < ShapeCasts.Length; i++)
         {
-            ShapeCast3D shapecast = shapecasts[i];
+            ShapeCast3D shapecast = ShapeCasts[i];
             if (shapecast.IsColliding())
             {
                 Value = 0;

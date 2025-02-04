@@ -3,15 +3,19 @@ using Godot;
 
 public partial class HudUi : Control
 {
-    [Export]
-    public Label diceLabel { get; private set; }
+    private MenuButton MenuButton { get; set; }
+    private Menu Menu { get; set; }
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        diceLabel = GetNode<Label>("DiceLabel");
+        Menu = (Menu)GetNode("Menu");
+        MenuButton = (MenuButton)GetNode("MenuToggle");
+        MenuButton.Pressed += MenuButtonPressed;
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
+    private void MenuButtonPressed()
+    {
+        Menu.Visible = !Menu.Visible;
+        GD.Print("MenuButtonPressed");
+    }
 }

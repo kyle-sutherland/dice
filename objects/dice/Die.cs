@@ -1,17 +1,24 @@
 using Godot;
 
-// Base class for all dice
+// Base class for all dice.
 public abstract partial class Die : RigidBody3D
 {
+    //Face-showing value of the die after successful CheckValue
     public int Value { get; set; }
-    protected int n;
-    protected ShapeCast3D[] shapecasts;
 
+    //number of sides the die has
+    protected int N { get; set; }
+
+    //Array of dies face shapecasts
+    protected ShapeCast3D[] ShapeCasts { get; set; }
+
+    //
+    //Checks the face-showing value of the die binds it to member variable Value.
     public virtual void CheckValue()
     {
-        for (int i = 0; i < shapecasts.Length; i++)
+        for (int i = 0; i < ShapeCasts.Length; i++)
         {
-            ShapeCast3D shapecast = shapecasts[i];
+            ShapeCast3D shapecast = ShapeCasts[i];
             if (shapecast.IsColliding())
             {
                 Value = 0;
@@ -21,7 +28,7 @@ public abstract partial class Die : RigidBody3D
                     var colliderName = collider.GetMeta("Name");
                     if (colliderName.ToString() == "floor")
                     {
-                        Value = n - i;
+                        Value = N - i;
                     }
                 }
             }
@@ -30,16 +37,19 @@ public abstract partial class Die : RigidBody3D
 
     public override void _Ready()
     {
-        shapecasts = new ShapeCast3D[n];
-        for (int i = 0; i < n; i++)
+        //Load surface shapecasts into an array for easier iteration.
+        ShapeCasts = new ShapeCast3D[N];
+        for (int i = 0; i < N; i++)
         {
             ShapeCast3D shapecast = GetNode<ShapeCast3D>($"face{i + 1}");
-            shapecasts[i] = shapecast;
+            ShapeCasts[i] = shapecast;
         }
     }
 
     public override void _Process(double delta)
     {
+        //The value is checked every frame. If I found a way to reliably check if the dice had stopped
+        //moving, it would be more elegant and efficient to call this once when that happens.
         CheckValue();
     }
 }

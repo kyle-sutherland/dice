@@ -4,18 +4,24 @@ using Godot;
 public partial class Player : CharacterBody3D
 {
     [Export]
-    public float Speed = 5.0f;
+    public StringName ShowCursorAction { get; private set; } = "ShowCursor";
 
     [Export]
-    public float Sensitivity = 0.01f;
+    public float Speed { get; set; } = 5.0f;
 
-    Camera3D camera;
-    Node3D head;
+    [Export]
+    public float Sensitivity { get; set; } = 0.01f;
+
+    public bool LockCamera { get; set; }
+
+    public Camera3D Camera { get; private set; }
+    public Node3D Head { get; private set; }
 
     public override void _Ready()
     {
-        head = GetNode<Node3D>("Head");
-        camera = GetNode<Camera3D>("Head/Camera3D");
+        Head = GetNode<Node3D>("Head");
+        Camera = GetNode<Camera3D>("Head/Camera3D");
+        LockCamera = false;
 
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
@@ -58,11 +64,29 @@ public partial class Player : CharacterBody3D
 
     public override void _Input(InputEvent @event)
     {
-        if (@event is InputEventMouseMotion)
+        if (@event is InputEventMouseMotion && !LockCamera)
         {
             InputEventMouseMotion mouseMotion = @event as InputEventMouseMotion;
             RotateY(-mouseMotion.Relative.X * Sensitivity);
-            camera.RotateX(-mouseMotion.Relative.Y * Sensitivity);
+            Camera.RotateX(-mouseMotion.Relative.Y * Sensitivity);
+        }
+        else if (@event.IsActionPressed(ShowCursorAction))
+        {
+            ShowCursor();
+        }
+    }
+
+    private void ShowCursor()
+    {
+        if (Input.MouseMode == Input.MouseModeEnum.Hidden)
+        {
+            Input.MouseMode = Input.MouseModeEnum.Visible;
+            LockCamera = true;
+        }
+        else
+        {
+            Input.MouseMode = Input.MouseModeEnum.Hidden;
+            LockCamera = false;
         }
     }
 }

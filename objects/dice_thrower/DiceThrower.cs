@@ -4,6 +4,88 @@ using Godot;
 public partial class DiceThrower : Node3D
 {
     [Export]
+    public StringName ThrowAction { get; private set; } = "Throw";
+
+    [Export]
+    public StringName ClearAction { get; private set; } = "Clear";
+
+    [Export]
+    public StringName CountAction { get; private set; } = "Count";
+
+    [Export]
+    public StringName NextDieAction { get; private set; } = "NextDie";
+
+    [Export]
+    public StringName PrevDieAction { get; private set; } = "PrevDie";
+
+    [Export]
+    public StringName Selectd4Action { get; private set; } = "Selectd4";
+
+    [Export]
+    public StringName Selectd6Action { get; private set; } = "Selectd6";
+
+    [Export]
+    public StringName Selectd8Action { get; private set; } = "Selectd8";
+
+    [Export]
+    public StringName Selectd10Action { get; private set; } = "Selectd10";
+
+    [Export]
+    public StringName Selectd12Action { get; private set; } = "Selectd12";
+
+    [Export]
+    public StringName Selectd20Action { get; private set; } = "Selectd20";
+
+    [Export]
+    public StringName PlayerGroup { get; private set; } = "Player";
+
+    [Export]
+    public StringName DiceParentGroup { get; private set; } = "DiceParent";
+
+    [Export]
+    public StringName D4ParentGroup { get; private set; } = "D4Spawn";
+
+    [Export]
+    public StringName D6ParentGroup { get; private set; } = "D6Spawn";
+
+    [Export]
+    public StringName D8ParentGroup { get; private set; } = "D8Spawn";
+
+    [Export]
+    public StringName D10ParentGroup { get; private set; } = "D10Spawn";
+
+    [Export]
+    public StringName D12ParentGroup { get; private set; } = "D12Spawn";
+
+    [Export]
+    public StringName D20ParentGroup { get; private set; } = "D20Spawn";
+
+    [Export]
+    public StringName MarqueeGroup { get; private set; } = "Marquee";
+
+    [Export]
+    public StringName LineEditsGroup { get; private set; } = "LineEdits";
+
+    [Export]
+    public StringName AllCheckInputGroup { get; private set; } = "AllCheckInput";
+
+    public SpinBox AllCheckInput { get; private set; }
+
+    public Godot.Collections.Array<Node> LineEditArray { get; private set; }
+
+    public LineEdit D4LineEdit { get; private set; }
+
+    public LineEdit D6LineEdit { get; private set; }
+
+    public LineEdit D8LineEdit { get; private set; }
+
+    public LineEdit D10LineEdit { get; private set; }
+
+    public LineEdit D12LineEdit { get; private set; }
+
+    public LineEdit D20LineEdit { get; private set; }
+
+    [Export]
     public bool Throw { get; private set; } = true;
 
     [Export]
@@ -15,9 +97,9 @@ public partial class DiceThrower : Node3D
     public PackedScene[] ReadyDieScenes { get; private set; } = new PackedScene[100];
 
     [Export]
-    public int[] NDice { get; private set; } = new int[6];
+    public int[] NDice { get; set; } = new int[6];
 
-    public int SelectedDieIndex { get; private set; } = 0;
+    public Nullable<int> SelectedDieIndex { get; private set; }
 
     [Export]
     public int D4Check { get; private set; }
@@ -95,30 +177,44 @@ public partial class DiceThrower : Node3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Player = GetTree().GetFirstNodeInGroup(Groups.PlayerGroup);
-        diceParent = GetTree().GetFirstNodeInGroup(Groups.DiceParentGroup);
-        d4Parent = GetTree().GetFirstNodeInGroup(Groups.D4ParentGroup);
-        d6Parent = GetTree().GetFirstNodeInGroup(Groups.D6ParentGroup);
-        d8Parent = GetTree().GetFirstNodeInGroup(Groups.D8ParentGroup);
-        d10Parent = GetTree().GetFirstNodeInGroup(Groups.D10ParentGroup);
-        d12Parent = GetTree().GetFirstNodeInGroup(Groups.D12ParentGroup);
-        d20Parent = GetTree().GetFirstNodeInGroup(Groups.D20ParentGroup);
+        SelectedDieIndex = null;
+        Player = GetTree().GetFirstNodeInGroup(PlayerGroup);
+        diceParent = GetTree().GetFirstNodeInGroup(DiceParentGroup);
+        d4Parent = GetTree().GetFirstNodeInGroup(D4ParentGroup);
+        d6Parent = GetTree().GetFirstNodeInGroup(D6ParentGroup);
+        d8Parent = GetTree().GetFirstNodeInGroup(D8ParentGroup);
+        d10Parent = GetTree().GetFirstNodeInGroup(D10ParentGroup);
+        d12Parent = GetTree().GetFirstNodeInGroup(D12ParentGroup);
+        d20Parent = GetTree().GetFirstNodeInGroup(D20ParentGroup);
         Delay = GetNode<Timer>("Delay");
 
-        string marqueeNodePath = GetTree().GetFirstNodeInGroup(Groups.MarqueeGroup).GetPath();
+        LineEditArray = GetTree().GetNodesInGroup(LineEditsGroup);
+        D4LineEdit = (LineEdit)LineEditArray[0];
+        D6LineEdit = (LineEdit)LineEditArray[1];
+        D8LineEdit = (LineEdit)LineEditArray[2];
+        D10LineEdit = (LineEdit)LineEditArray[3];
+        D12LineEdit = (LineEdit)LineEditArray[4];
+        D20LineEdit = (LineEdit)LineEditArray[5];
+
+        AllCheckInput = (SpinBox)GetTree().GetFirstNodeInGroup(AllCheckInputGroup);
+
+        string marqueeNodePath = GetTree().GetFirstNodeInGroup(MarqueeGroup).GetPath();
         marquee = GetNodeOrNull<Label3D>(marqueeNodePath);
         SelectedDieIndex = 1;
 
         if (diceParent == null)
         {
-            GD.PushWarning("No dice parent found in group " + Groups.DiceParentGroup);
+            GD.PushWarning("No dice parent found in group " + DiceParentGroup);
         }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        SelectedDieScene = DieScenes[SelectedDieIndex];
+        if (SelectedDieIndex != null)
+        {
+            SelectedDieScene = DieScenes[(int)SelectedDieIndex];
+        }
         D4Total = CountDice("d4");
         D6Total = CountDice("d6");
         D8Total = CountDice("d8");
@@ -161,60 +257,63 @@ public partial class DiceThrower : Node3D
 
     public override void _Input(InputEvent @event)
     {
-        if (@event.IsActionPressed(Actions.ThrowAction))
+        if (@event.IsActionPressed(ThrowAction))
         {
+            ReadyChecks();
             ReadyDice();
             RollDice();
         }
-        else if (@event.IsActionPressed(Actions.ClearAction))
+        else if (@event.IsActionPressed(ClearAction))
         {
             ClearDice();
         }
-        else if (@event.IsActionPressed(Actions.CountAction)) { }
-        else if (@event.IsActionPressed(Actions.NextDieAction))
-        {
-            if (SelectedDieIndex == DieScenes.GetLength(0))
-            {
-                SelectedDieIndex = 0;
-                SelectedDieScene = DieScenes[SelectedDieIndex];
-            }
-            else
-            {
-                SelectedDieIndex++;
-                SelectedDieScene = DieScenes[SelectedDieIndex];
-            }
-        }
-        else if (@event.IsActionPressed(Actions.PrevDieAction))
-        {
-            if (SelectedDieIndex == 0)
-            {
-                SelectedDieIndex = DieScenes.GetLength(0);
-                SelectedDieScene = DieScenes[SelectedDieIndex];
-            }
-            SelectedDieIndex--;
-            SelectedDieScene = DieScenes[SelectedDieIndex];
-        }
-        else if (@event.IsActionPressed(Actions.Selectd4Action))
+        else if (@event.IsActionPressed(CountAction)) { }
+        // commenting out for now as these actions may not be needed.
+        // else if (@event.IsActionPressed(NextDieAction))
+        // {
+        //     if (SelectedDieIndex == DieScenes.GetLength(0))
+        //     {
+        //         SelectedDieIndex = 0;
+        //         SelectedDieScene = DieScenes[SelectedDieIndex];
+        //     }
+        //     else
+        //     {
+        //         SelectedDieIndex++;
+        //         SelectedDieScene = DieScenes[SelectedDieIndex];
+        //     }
+        // }
+        // else if (@event.IsActionPressed(PrevDieAction))
+        // {
+        //     if (SelectedDieIndex == 0)
+        //     {
+        //         SelectedDieIndex = DieScenes.GetLength(0);
+        //         SelectedDieScene = DieScenes[SelectedDieIndex];
+        //     }
+        //     SelectedDieIndex--;
+        //     SelectedDieScene = DieScenes[SelectedDieIndex];
+        // }
+
+        else if (@event.IsActionPressed(Selectd4Action))
         {
             SelectedDieIndex = 0;
         }
-        else if (@event.IsActionPressed(Actions.Selectd6Action))
+        else if (@event.IsActionPressed(Selectd6Action))
         {
             SelectedDieIndex = 1;
         }
-        else if (@event.IsActionPressed(Actions.Selectd8Action))
+        else if (@event.IsActionPressed(Selectd8Action))
         {
             SelectedDieIndex = 2;
         }
-        else if (@event.IsActionPressed(Actions.Selectd10Action))
+        else if (@event.IsActionPressed(Selectd10Action))
         {
             SelectedDieIndex = 3;
         }
-        else if (@event.IsActionPressed(Actions.Selectd12Action))
+        else if (@event.IsActionPressed(Selectd12Action))
         {
             SelectedDieIndex = 4;
         }
-        else if (@event.IsActionPressed(Actions.Selectd20Action))
+        else if (@event.IsActionPressed(Selectd20Action))
         {
             SelectedDieIndex = 5;
         }
@@ -232,8 +331,22 @@ public partial class DiceThrower : Node3D
         }
     }
 
+    public void ReadyChecks()
+    {
+        double AllCheckInputValue = AllCheckInput.Value;
+        AllCheck = (int)AllCheckInputValue;
+    }
+
+    //
+    //Loads Die objects into ReadyDieScenes array based on values stored in NDice array
     public void ReadyDice()
     {
+        NDice[0] = D4LineEdit.Text.ToInt();
+        NDice[1] = D6LineEdit.Text.ToInt();
+        NDice[2] = D8LineEdit.Text.ToInt();
+        NDice[3] = D10LineEdit.Text.ToInt();
+        NDice[4] = D12LineEdit.Text.ToInt();
+        NDice[5] = D20LineEdit.Text.ToInt();
         int nSum = 0;
         for (int i = 0; i < NDice.GetLength(0); i++)
         {
@@ -244,9 +357,12 @@ public partial class DiceThrower : Node3D
             }
             nSum += n;
         }
-        GD.Print(ReadyDieScenes);
+        // GD.Print(ReadyDieScenes);
     }
 
+    //
+    //Returns the total value of the NDice array, which corresponds to the total number of dice
+    //to be instanced.
     public int GetNAllDice()
     {
         int n = 0;
@@ -257,6 +373,8 @@ public partial class DiceThrower : Node3D
         return n;
     }
 
+    //
+    //Takes one PackedScene array argument and
     public async void ThrowDice(PackedScene[] diceToThrow)
     {
         float positionZOffset = 1.8f;
@@ -274,6 +392,7 @@ public partial class DiceThrower : Node3D
                 Vector3 position = GlobalPosition;
                 position.Z = position.Z + positionZOffset - (positionZOffset * positionOffsetCount);
                 position.Y = position.Y + positionYOffset - (positionYOffset * rowCount);
+                string text = D4LineEdit.Text;
                 if (positionOffsetCount > 1)
                 {
                     positionOffsetCount = 0;
@@ -491,6 +610,9 @@ public partial class DiceThrower : Node3D
         return message;
     }
 
+    //
+    //Iterates over all Dice Nodes from their respective parent Nodes and despawns them by calling
+    //the Node.QueueFree method on each Die object
     public void ClearDice()
     {
         Godot.Collections.Array<Node> dice =

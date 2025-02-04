@@ -1,7 +1,7 @@
 public partial class DTwenty : Die
 {
-    DTwenty()
+    private DTwenty()
     {
-        n = 20;
+        N = 20;
     }
 }

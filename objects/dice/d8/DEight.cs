@@ -1,7 +1,7 @@
 public partial class DEight : Die
 {
-    DEight()
+    private DEight()
     {
-        n = 8;
+        N = 8;
     }
 }

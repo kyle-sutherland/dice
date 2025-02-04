@@ -1,7 +1,7 @@
 public partial class DSix : Die
 {
-	DSix()
-	{
-		n = 6;
-	}
+    private DSix()
+    {
+        N = 6;
+    }
 }

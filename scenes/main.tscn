@@ -199,7 +199,6 @@ doppler_tracking = 2
 [node name="DiceThrower" parent="." groups=["DiceThrower"] instance=ExtResource("1_uvifp")]
 transform = Transform3D(0.999715, 0.0238738, 0, -0.0238738, 0.999715, 0, 0, 0, 1, 8.40505, 10.4309, -0.983984)
 DieScenes = [ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")]
-nDice = PackedInt32Array(0, 0, 0, 10, 0, 0)
 
 [node name="DiceParent" type="Node3D" parent="." groups=["DiceParent"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)

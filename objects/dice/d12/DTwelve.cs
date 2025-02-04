@@ -2,6 +2,6 @@ public partial class DTwelve : Die
 {
     DTwelve()
     {
-        n = 12;
+        N = 12;
     }
 }
