@@ -107,7 +107,9 @@ environment = SubResource("Environment_06rpj")
 [node name="LevelRoot" type="StaticBody3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="LevelRoot"]
-transform = Transform3D(0.5, 0.75, -0.433013, 0, 0.5, 0.866025, 0.866025, -0.433013, 0.25, 0, 0, 0)
+transform = Transform3D(0.51306, 0.85114, -0.111041, 0.0413247, 0.104722, 0.993643, 0.857357, -0.514387, 0.0185556, 0, 3.585, 0)
+light_energy = 0.748
+light_indirect_energy = 1.506
 shadow_enabled = true
 
 [node name="DiceThrower" parent="LevelRoot" groups=["DiceThrower"] instance=ExtResource("1_uvifp")]
@@ -125,11 +127,11 @@ autowrap_mode = 3
 [node name="DiceBox" type="Node3D" parent="LevelRoot"]
 
 [node name="Player" parent="LevelRoot" groups=["Player"] instance=ExtResource("14_dr6u8")]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91068e-15, 0, 55.525, 0)
+transform = Transform3D(-4.37114e-08, -0.999391, 0.0348995, 0, 0.0348995, 0.999391, -1, 4.36848e-08, -1.52551e-09, -0.3, 52.8, 0)
 motion_mode = 1
 
 [node name="Camera3D" parent="LevelRoot/Player/Head" index="0"]
-transform = Transform3D(1, -4.61853e-14, -2.22045e-16, 4.9738e-14, 1, 3.55271e-15, 2.22044e-16, 8.35188e-23, 1, 0, -2.38419e-07, -2.61746)
+transform = Transform3D(1, -4.61853e-14, -2.22045e-16, 4.9738e-14, 1, 3.55271e-15, 2.22044e-16, 8.35188e-23, 1, 0, 0, 0)
 fov = 22.0
 size = 19.877
 
