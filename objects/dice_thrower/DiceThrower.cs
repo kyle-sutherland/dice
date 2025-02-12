@@ -390,9 +390,9 @@ public partial class DiceThrower : Node3D
             if (dieToThrow != null)
             {
                 Vector3 position = GlobalPosition;
+                Vector3 rotation = GlobalRotation;
                 position.Z = position.Z + positionZOffset - (positionZOffset * positionOffsetCount);
                 position.Y = position.Y + positionYOffset - (positionYOffset * rowCount);
-                string text = D4LineEdit.Text;
                 if (positionOffsetCount > 1)
                 {
                     positionOffsetCount = 0;
@@ -412,13 +412,13 @@ public partial class DiceThrower : Node3D
                 Die dieInstance = dieToThrow.Instantiate<Die>();
                 string dieInstanceTypeName = dieInstance.GetType().ToString();
                 RandomNumberGenerator random = new();
-                float aimX = random.RandfRange(-0.2f, -0.7f);
-                float aimY = random.RandfRange(-0.2f, 0.2f);
-                float aimZ = random.RandfRange(-0.2f, 0.2f);
+                float aimX = random.RandfRange(-0.3f, 0.3f);
+                float aimY = random.RandfRange(-0.8f, -0.1f);
+                float aimZ = random.RandfRange(-0.3f, 0.3f);
                 float torqueX;
                 float torqueY;
                 float torqueZ;
-                aimDirection = new Vector3(aimX, aimY, aimZ);
+                aimDirection = new Vector3(aimX, aimY, aimZ) + rotation;
                 LaunchForce = random.RandfRange(1200f, 1800f);
                 if (dieInstanceTypeName == "DFour")
                 {

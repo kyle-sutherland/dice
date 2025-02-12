@@ -42,7 +42,7 @@ volumetric_fog_density = 0.01
 adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uer6s"]
-size = Vector3(1, 40, 22)
+size = Vector3(1, 40, 38)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rr752"]
 
@@ -78,7 +78,7 @@ bounce = 0.25
 absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0m64"]
-size = Vector3(20, 1, 20)
+size = Vector3(50, 1, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygi7p"]
 albedo_color = Color(0, 0, 0, 1)
@@ -104,112 +104,118 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0667973, -0.0298014, 0.035
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_06rpj")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="LevelRoot" type="StaticBody3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LevelRoot"]
 transform = Transform3D(0.5, 0.75, -0.433013, 0, 0.5, 0.866025, 0.866025, -0.433013, 0.25, 0, 0, 0)
 shadow_enabled = true
 
-[node name="wall1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1.999, 0)
+[node name="DiceThrower" parent="LevelRoot" groups=["DiceThrower"] instance=ExtResource("1_uvifp")]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, 1, 1.91069e-15, -7.10543e-15, 7.10543e-15, -4.37114e-08, 1, 1.07761, 5.84319, -16.7199)
+DieScenes = [ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall1"]
+[node name="DiceParent" type="Node3D" parent="LevelRoot" groups=["DiceParent"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)
+
+[node name="Marquee" type="Label3D" parent="LevelRoot" groups=["Marquee"]]
+unique_name_in_owner = true
+transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, -9.01204, 12.0378, -0.48366)
+autowrap_mode = 3
+
+[node name="DiceBox" type="Node3D" parent="LevelRoot"]
+
+[node name="Player" parent="LevelRoot" groups=["Player"] instance=ExtResource("14_dr6u8")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91068e-15, 0, 55.525, 0)
+motion_mode = 1
+
+[node name="Camera3D" parent="LevelRoot/Player/Head" index="0"]
+transform = Transform3D(1, -4.61853e-14, -2.22045e-16, 4.9738e-14, 1, 3.55271e-15, 2.22044e-16, 8.35188e-23, 1, 0, -2.38419e-07, -2.61746)
+fov = 22.0
+size = 19.877
+
+[node name="wall1" type="StaticBody3D" parent="LevelRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.999, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelRoot/wall1"]
 shape = SubResource("BoxShape3D_uer6s")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="wall1/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 22, 0.0616875, -0.0711823, -0.0660553)
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LevelRoot/wall1/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 38, 0.0616875, -0.0711823, -0.0660553)
 rotation_edit_mode = 1
 gi_mode = 2
 mesh = SubResource("BoxMesh_rr752")
 skeleton = NodePath("../../../wall2/CollisionShape3D/MeshInstance3D4")
 surface_material_override/0 = SubResource("StandardMaterial3D_teovr")
 
-[node name="wall2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.999, 10.5)
+[node name="wall2" type="StaticBody3D" parent="LevelRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.999, 17.8)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelRoot/wall2"]
 shape = SubResource("BoxShape3D_a3fxk")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="wall2/CollisionShape3D"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LevelRoot/wall2/CollisionShape3D"]
 transform = Transform3D(20, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
 rotation_edit_mode = 1
 gi_mode = 2
 mesh = SubResource("BoxMesh_rr752")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_teovr")
 
-[node name="wall3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.999, 0)
+[node name="wall3" type="StaticBody3D" parent="LevelRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.999, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelRoot/wall3"]
 transform = Transform3D(1.00713, 0, 0, 0, 1.00713, 0, 0, 0, 1.00713, 0, 0, 0)
 shape = SubResource("BoxShape3D_uer6s")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="wall3/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 22, 0, 0, 0)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LevelRoot/wall3/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 38, 0, 0, 0)
 rotation_edit_mode = 1
 gi_mode = 2
 mesh = SubResource("BoxMesh_rr752")
 skeleton = NodePath("../../../wall4/CollisionShape3D2/MeshInstance3D2")
 surface_material_override/0 = SubResource("StandardMaterial3D_teovr")
 
-[node name="wall4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.999, -10.5)
+[node name="wall4" type="StaticBody3D" parent="LevelRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.999, -17.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="wall4"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelRoot/wall4"]
 shape = SubResource("BoxShape3D_8idgy")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall4/CollisionShape3D2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LevelRoot/wall4/CollisionShape3D2"]
 transform = Transform3D(20, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
 rotation_edit_mode = 1
 gi_mode = 2
 mesh = SubResource("BoxMesh_rr752")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_teovr")
 
-[node name="floor" type="StaticBody3D" parent="."]
+[node name="floor" type="StaticBody3D" parent="LevelRoot"]
 rotation_edit_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_nhfvc")
 metadata/Name = "floor"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelRoot/floor"]
 rotation_edit_mode = 1
 shape = SubResource("BoxShape3D_x0m64")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelRoot/floor/CollisionShape3D"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 rotation_edit_mode = 1
 gi_mode = 2
 mesh = SubResource("BoxMesh_rr752")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ygi7p")
 
-[node name="ceiling" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.6354, 0)
+[node name="ceiling" type="StaticBody3D" parent="LevelRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.10429, 0)
 rotation_edit_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_nhfvc")
 metadata/Name = "floor"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelRoot/ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0895662, 0)
 rotation_edit_mode = 1
 shape = SubResource("BoxShape3D_x0m64")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.775871, 0.320249, -0.543567, 2.15842e-08, 0.861585, 0.507614, 0.630892, -0.393842, 0.668478, -15.7019, 10.2437, 16.1924)
-doppler_tracking = 2
-
-[node name="DiceThrower" parent="." groups=["DiceThrower"] instance=ExtResource("1_uvifp")]
-transform = Transform3D(0.999715, 0.0238738, 0, -0.0238738, 0.999715, 0, 0, 0, 1, 8.40505, 10.4309, -0.983984)
-DieScenes = [ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")]
-
-[node name="DiceParent" type="Node3D" parent="." groups=["DiceParent"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)
-
-[node name="Marquee" type="Label3D" parent="." groups=["Marquee"]]
-unique_name_in_owner = true
-transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, -9.01204, 12.0378, -0.48366)
-autowrap_mode = 3
-
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("14_dr6u8")]
-transform = Transform3D(-0.00929009, -0.206358, 0.978432, -0.00195925, 0.978477, 0.206349, -0.999955, 0, -0.00949444, 15.9963, 8.83819, 1.46077)
-motion_mode = 1
-
-[node name="DiceBox" type="Node3D" parent="."]
+[editable path="LevelRoot/Player"]
