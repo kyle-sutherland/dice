@@ -34,14 +34,15 @@ text = "Menu"
 
 [node name="ThrowButton" type="MenuButton" parent="."]
 layout_mode = 0
-offset_left = 1052.0
-offset_top = 576.0
-offset_right = 1115.0
-offset_bottom = 617.0
+offset_left = 52.0
+offset_top = 497.0
+offset_right = 115.0
+offset_bottom = 538.0
 text = "Throw"
 
 [node name="Menu" parent="." instance=ExtResource("3_acfds")]
 layout_mode = 1
-offset_top = -1.0
-offset_right = -1152.0
-offset_bottom = -649.0
+offset_left = 180.0
+offset_top = -21.0
+offset_right = -972.0
+offset_bottom = -669.0

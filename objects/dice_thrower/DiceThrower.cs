@@ -77,9 +77,6 @@ public partial class DiceThrower : Node3D
     {
         if (@event.IsActionPressed(ThrowAction))
         {
-            DiceManager.ReadyChecks();
-            DiceManager.ReadyDice();
-            Dice = DiceManager.ReadyDieScenes;
             RollDice();
         }
         else if (@event.IsActionPressed(ClearAction))
@@ -117,6 +114,9 @@ public partial class DiceThrower : Node3D
     //
     public void RollDice()
     {
+        DiceManager.ReadyChecks();
+        DiceManager.ReadyDice();
+        Dice = DiceManager.ReadyDieScenes;
         if (Throw)
         {
             ThrowDice(Dice);

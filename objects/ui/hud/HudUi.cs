@@ -5,17 +5,19 @@ public partial class HudUi : Control
 {
     private MenuButton MenuButton { get; set; }
     private Menu Menu { get; set; }
+    private MenuButton ThrowButton { get; set; }
 
-    [Export]
-    public StringName DiceManagerGroup { get; private set; } = "DiceManager";
+    private StringName DiceManagerGroup { get; set; } = "DiceManager";
 
-    [Export]
-    public StringName MarqueeGroup { get; private set; } = "Marquee";
+    private StringName DiceThrowerGroup { get; set; } = "DiceThrower";
 
-    [Export]
-    public StringName PlayerGroup { get; private set; } = "Player";
+    private StringName MarqueeGroup { get; set; } = "Marquee";
 
-    public DiceManager DiceManager { get; private set; }
+    private StringName PlayerGroup { get; set; } = "Player";
+
+    private DiceThrower DiceThrower { get; set; }
+
+    private DiceManager DiceManager { get; set; }
 
     private Label3D marquee;
 
@@ -28,10 +30,16 @@ public partial class HudUi : Control
             GD.PushWarning("No dice manager found in group " + DiceManagerGroup);
         }
         Menu = (Menu)GetNode("Menu");
-        MenuButton = (MenuButton)GetNode("MenuToggle");
+        MenuButton = GetNode<MenuButton>("MenuToggle");
+        ThrowButton = GetNode<MenuButton>("ThrowButton");
         MenuButton.Pressed += MenuButtonPressed;
+        ThrowButton.Pressed += ThrowButtonPressed;
         string marqueeNodePath = GetTree().GetFirstNodeInGroup(MarqueeGroup).GetPath();
         marquee = GetNodeOrNull<Label3D>(marqueeNodePath);
+        string DiceThrowerNodePath = GetTree().GetFirstNodeInGroup(DiceThrowerGroup).GetPath();
+        DiceThrower = GetNodeOrNull<DiceThrower>(DiceThrowerNodePath);
+        string DiceManagerNodePath = GetTree().GetFirstNodeInGroup(DiceManagerGroup).GetPath();
+        DiceManager = GetNodeOrNull<DiceManager>(DiceManagerNodePath);
     }
 
     public override void _Process(double delta)
@@ -45,6 +53,14 @@ public partial class HudUi : Control
     {
         Menu.Visible = !Menu.Visible;
         GD.Print("MenuButtonPressed");
+    }
+
+    private void ThrowButtonPressed()
+    {
+        DiceManager.ClearDice();
+
+        DiceThrower.RollDice();
+        GD.Print("ThrowButtonPressed");
     }
 
     public string CreateMessage()

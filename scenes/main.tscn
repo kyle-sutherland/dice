@@ -128,7 +128,7 @@ autowrap_mode = 3
 [node name="DiceBox" type="Node3D" parent="LevelRoot"]
 
 [node name="Player" parent="LevelRoot" groups=["Player"] instance=ExtResource("14_dr6u8")]
-transform = Transform3D(-4.37114e-08, -0.999657, 0.026177, 0, 0.026177, 0.999657, -1, 4.36964e-08, -1.14423e-09, 1.3, 52.8, 0)
+transform = Transform3D(-4.37114e-08, -0.999657, 0.026177, 0, 0.026177, 0.999657, -1, 4.36964e-08, -1.14423e-09, 1.29089, 52.8481, -0.00667953)
 motion_mode = 1
 
 [node name="Camera3D" parent="LevelRoot/Player/Head" index="0"]
@@ -211,7 +211,7 @@ skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ygi7p")
 
 [node name="ceiling" type="StaticBody3D" parent="LevelRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.10429, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0648, 0)
 rotation_edit_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_nhfvc")
 metadata/Name = "floor"
