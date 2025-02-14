@@ -12,27 +12,28 @@ public partial class Player : CharacterBody3D
 
     public override void _Ready()
     {
-        Head = GetNode<Node3D>("Head");
-        Camera = GetNode<Camera3D>("Head/Camera3D");
+        // Head = GetNode<Node3D>("Head");
+        // Camera = GetNode<Camera3D>("Head/Camera3D");
 
-        Input.MouseMode = Input.MouseModeEnum.Captured;
+        // Input.MouseMode = Input.MouseModeEnum.Captured;
+        // Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
     public override void _PhysicsProcess(double delta) { }
 
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed(ShowCursorAction))
-        {
-            ShowCursor();
-        }
-    }
+    // public override void _Input(InputEvent @event)
+    // {
+    //     if (@event.IsActionPressed(ShowCursorAction))
+    //     {
+    //         ShowCursor();
+    //     }
+    // }
 
-    private static void ShowCursor()
-    {
-        Input.MouseMode =
-            Input.MouseMode != Input.MouseModeEnum.Hidden
-                ? Input.MouseModeEnum.Hidden
-                : Input.MouseModeEnum.Visible;
-    }
+    // private static void ShowCursor()
+    // {
+    //     Input.MouseMode =
+    //         Input.MouseMode != Input.MouseModeEnum.Hidden
+    //             ? Input.MouseModeEnum.Hidden
+    //             : Input.MouseModeEnum.Visible;
+    // }
 }

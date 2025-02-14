@@ -221,7 +221,6 @@ public partial class DiceManager : Node
             }
             nSum += n;
         }
-        // GD.Print(ReadyDieScenes);
     }
 
     //
@@ -265,9 +264,14 @@ public partial class DiceManager : Node
     //     return total;
     // }
 
+    //
+    //counts the number of dice of a given type. takse one argument as a string which is the type
+    //of die to count. Must be in format "d4", "d6" etc. Can also pass "all" to count all dice.
+    //returns an integer which is the number of dice of that type.
+    //Will return 0 and raise a warning if the die type is not valid.
     public int CountDice(string dtype)
     {
-        Node DParent = null;
+        Node DParent;
         if (dtype == "d4")
         {
             DParent = D4Parent;
@@ -292,6 +296,22 @@ public partial class DiceManager : Node
         {
             DParent = D20Parent;
         }
+        else if (dtype == "all")
+        {
+            int n =
+                CountDice("d4")
+                + CountDice("d6")
+                + CountDice("d8")
+                + CountDice("d10")
+                + CountDice("d12")
+                + CountDice("d20");
+            return n;
+        }
+        else
+        {
+            GD.PushWarning("Invalid dice type passe to CountDice():" + dtype);
+            return 0;
+        }
         int v;
         int total = 0;
         for (int i = 0; i < DParent.GetChildCount(); i++)
@@ -304,9 +324,13 @@ public partial class DiceManager : Node
         return total;
     }
 
+    //
+    //Checks the total number of all dice of a given type that show a value greater than or equal
+    //to a given value. If "all" is passed, it will check all dice of the given type.
+    //Will return 0 if the dice type is invalid.
     public int CheckDice(int check, string dtype)
     {
-        Node DParent = null;
+        Node DParent;
         if (dtype == "d4")
         {
             DParent = D4Parent;
@@ -330,6 +354,22 @@ public partial class DiceManager : Node
         else if (dtype == "d20")
         {
             DParent = D20Parent;
+        }
+        else if (dtype == "all")
+        {
+            int i =
+                CheckDice(check, "d4")
+                + CheckDice(check, "d6")
+                + CheckDice(check, "d8")
+                + CheckDice(check, "d10")
+                + CheckDice(check, "d12")
+                + CheckDice(check, "d20");
+            return i;
+        }
+        else
+        {
+            GD.PushWarning("Invalid dice type passed to CheckDice(): " + dtype);
+            return 0;
         }
         int v;
         int n = 0;
@@ -356,63 +396,31 @@ public partial class DiceManager : Node
         return pass;
     }
 
-    public string CreateMessage()
+    public void AssignDieToParent(Die dieInstance, string dieInstanceTypeName)
     {
-        string message = "";
-        if (D4Parent.GetChildCount() != 0)
+        if (dieInstanceTypeName == "DFour")
         {
-            message += $"{D4Parent.GetChildCount()}d4: {D4Total}\n";
+            D4Parent.AddChild(dieInstance);
         }
-        if (D6Parent.GetChildCount() != 0)
+        else if (dieInstanceTypeName == "DSix")
         {
-            message += $"{D6Parent.GetChildCount()}d6: {D6Total}\n";
+            D6Parent.AddChild(dieInstance);
         }
-        if (D8Parent.GetChildCount() != 0)
+        else if (dieInstanceTypeName == "DEight")
         {
-            message += $"{D8Parent.GetChildCount()}d8: {D8Total}\n";
+            D8Parent.AddChild(dieInstance);
         }
-        if (D10Parent.GetChildCount() != 0)
+        else if (dieInstanceTypeName == "DTen")
         {
-            message += $"{D10Parent.GetChildCount()}d10: {D10Total}\n";
+            D10Parent.AddChild(dieInstance);
         }
-        if (D12Parent.GetChildCount() != 0)
+        else if (dieInstanceTypeName == "DTwelve")
         {
-            message += $"{D12Parent.GetChildCount()}d12: {D12Total}\n";
+            D12Parent.AddChild(dieInstance);
         }
-        if (D20Parent.GetChildCount() != 0)
+        else if (dieInstanceTypeName == "DTwenty")
         {
-            message += $"{D20Parent.GetChildCount()}d20: {D20Total}\n";
+            D20Parent.AddChild(dieInstance);
         }
-        message += $"all: {AllTotal}\n";
-        if (D4Check != 0)
-        {
-            message += $"d4 Pass: {ND4Pass}\n";
-        }
-        if (D6Check != 0)
-        {
-            message += $"d6 Pass: {ND6Pass}\n";
-        }
-        if (D8Check != 0)
-        {
-            message += $"d8 Pass: {ND8Pass}\n";
-        }
-        if (D10Check != 0)
-        {
-            message += $"d10 Pass: {ND10Pass}\n";
-        }
-        if (D12Check != 0)
-        {
-            message += $"d12 Pass: {ND12Pass}\n";
-        }
-        if (D20Check != 0)
-        {
-            message += $"d20 Pass: {ND20Pass}\n";
-        }
-        if (AllCheck != 0)
-        {
-            string pass = AllPass ? "pass" : "fail";
-            message += $"check: {AllCheck}, {pass}\n";
-        }
-        return message;
     }
 }
