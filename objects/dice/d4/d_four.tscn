@@ -18,9 +18,11 @@ points = PackedVector3Array(-0.000169575, -0.707106, -1, -0.866025, -0.707106, 0
 [sub_resource type="SphereShape3D" id="SphereShape3D_w5p8r"]
 
 [node name="DFour" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2, 0)
 mass = 0.7
 physics_material_override = ExtResource("1_jp3de")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.4, 0)
 max_contacts_reported = 1
 script = ExtResource("2_w1k8x")
 

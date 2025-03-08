@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://bkxcyjsfe1y02"]
+[gd_scene load_steps=33 format=3 uid="uid://bkxcyjsfe1y02"]
 
 [ext_resource type="Texture2D" uid="uid://b4fw3esbfywju" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_Color.png" id="1_s3xga"]
 [ext_resource type="Material" uid="uid://cm48tlxr8n62s" path="res://scenes/mainsk1.tres" id="1_tsulg"]
 [ext_resource type="PackedScene" uid="uid://b4gcab7fghmvy" path="res://objects/dice_thrower/dice_thrower.tscn" id="1_uvifp"]
+[ext_resource type="Script" path="res://scenes/LevelRoot.cs" id="2_p8n32"]
 [ext_resource type="Texture2D" uid="uid://d3nkg7xnabp13" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_Displacement.png" id="2_w24vt"]
 [ext_resource type="Texture2D" uid="uid://clt5cuus8c8kg" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_Metalness.png" id="3_rvw65"]
 [ext_resource type="Texture2D" uid="uid://415bahjw2553" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_NormalGL.png" id="4_qktsv"]
@@ -105,17 +106,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0667973, -0.0298014, 0.035
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_06rpj")
 
-[node name="LevelRoot" type="StaticBody3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LevelRoot"]
-transform = Transform3D(0.51306, 0.85114, -0.111041, 0.0413247, 0.104722, 0.993643, 0.857357, -0.514387, 0.0185556, 0, 3.585, 0)
-light_energy = 0.748
-light_indirect_energy = 1.506
-shadow_enabled = true
+[node name="LevelRoot" type="StaticBody3D" parent="." groups=["LevelRoot"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 5.96046e-08, 1, -8.88178e-15, 1, -5.96046e-08, -4.37114e-08, 0, 0, 0)
+script = ExtResource("2_p8n32")
 
 [node name="DiceThrower" parent="LevelRoot" groups=["DiceThrower"] instance=ExtResource("1_uvifp")]
-transform = Transform3D(1.91069e-15, -1, -4.37114e-08, 1, 1.91069e-15, -7.10543e-15, 7.10543e-15, -4.37114e-08, 1, 1.07761, 5.84319, -16.7199)
-DieScenes = [ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")]
+transform = Transform3D(-8.74228e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 8.74228e-08, -4.37114e-08, 1.07761, 4.11094, -14.0686)
 
 [node name="DiceParent" type="Node3D" parent="LevelRoot" groups=["DiceParent"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517937, 1.05221, -1.02625)
@@ -224,5 +220,11 @@ shape = SubResource("BoxShape3D_x0m64")
 [node name="DiceManager" type="Node" parent="." groups=["DiceManager"]]
 script = ExtResource("21_hqr7y")
 DieScenes = [ExtResource("14_wdfae"), ExtResource("15_dm8kc"), ExtResource("16_6cnwn"), ExtResource("17_rrld6"), ExtResource("18_xcwqp"), ExtResource("14_bb07c")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.51306, 0.85114, -0.111041, 0.0413247, 0.104722, 0.993643, 0.857357, -0.514387, 0.0185556, 0, 3.585, 0)
+light_energy = 0.748
+light_indirect_energy = 1.506
+shadow_enabled = true
 
 [editable path="LevelRoot/Player"]

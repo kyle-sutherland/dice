@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cioutbyab58qb"
 path.s3tc="res://.godot/imported/Leather026_2K-PNG_Displacement.png-083adf3e8c9e1f8616f6da43b16980ab.s3tc.ctex"
+path.etc2="res://.godot/imported/Leather026_2K-PNG_Displacement.png-083adf3e8c9e1f8616f6da43b16980ab.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/Leather026_2K-PNG/Leather026_2K-PNG_Displacement.png"
-dest_files=["res://.godot/imported/Leather026_2K-PNG_Displacement.png-083adf3e8c9e1f8616f6da43b16980ab.s3tc.ctex"]
+dest_files=["res://.godot/imported/Leather026_2K-PNG_Displacement.png-083adf3e8c9e1f8616f6da43b16980ab.s3tc.ctex", "res://.godot/imported/Leather026_2K-PNG_Displacement.png-083adf3e8c9e1f8616f6da43b16980ab.etc2.ctex"]
 
 [params]
 

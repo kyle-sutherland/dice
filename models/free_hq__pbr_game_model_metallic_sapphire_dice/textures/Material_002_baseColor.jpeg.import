@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c06ymekctdw2b"
 path.s3tc="res://.godot/imported/Material_002_baseColor.jpeg-c162df40dacf825363d3319444229951.s3tc.ctex"
+path.etc2="res://.godot/imported/Material_002_baseColor.jpeg-c162df40dacf825363d3319444229951.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/free_hq__pbr_game_model_metallic_sapphire_dice/textures/Material_002_baseColor.jpeg"
-dest_files=["res://.godot/imported/Material_002_baseColor.jpeg-c162df40dacf825363d3319444229951.s3tc.ctex"]
+dest_files=["res://.godot/imported/Material_002_baseColor.jpeg-c162df40dacf825363d3319444229951.s3tc.ctex", "res://.godot/imported/Material_002_baseColor.jpeg-c162df40dacf825363d3319444229951.etc2.ctex"]
 
 [params]
 

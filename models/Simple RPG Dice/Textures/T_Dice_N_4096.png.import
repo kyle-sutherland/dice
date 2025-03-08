@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdmmkpfal2xje"
 path.s3tc="res://.godot/imported/T_Dice_N_4096.png-4830b9dfa5e42d0e58b3a3e7f4056ced.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Dice_N_4096.png-4830b9dfa5e42d0e58b3a3e7f4056ced.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/Simple RPG Dice/Textures/T_Dice_N_4096.png"
-dest_files=["res://.godot/imported/T_Dice_N_4096.png-4830b9dfa5e42d0e58b3a3e7f4056ced.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Dice_N_4096.png-4830b9dfa5e42d0e58b3a3e7f4056ced.s3tc.ctex", "res://.godot/imported/T_Dice_N_4096.png-4830b9dfa5e42d0e58b3a3e7f4056ced.etc2.ctex"]
 
 [params]
 

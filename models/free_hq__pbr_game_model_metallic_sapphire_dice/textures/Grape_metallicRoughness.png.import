@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://1um665lph51a"
 path.s3tc="res://.godot/imported/Grape_metallicRoughness.png-5cf9a6f9b0038d5cddd3542acb38ad64.s3tc.ctex"
+path.etc2="res://.godot/imported/Grape_metallicRoughness.png-5cf9a6f9b0038d5cddd3542acb38ad64.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/free_hq__pbr_game_model_metallic_sapphire_dice/textures/Grape_metallicRoughness.png"
-dest_files=["res://.godot/imported/Grape_metallicRoughness.png-5cf9a6f9b0038d5cddd3542acb38ad64.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grape_metallicRoughness.png-5cf9a6f9b0038d5cddd3542acb38ad64.s3tc.ctex", "res://.godot/imported/Grape_metallicRoughness.png-5cf9a6f9b0038d5cddd3542acb38ad64.etc2.ctex"]
 
 [params]
 

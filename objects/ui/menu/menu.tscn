@@ -1,127 +1,237 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhcds4r17xx6"]
+[gd_scene load_steps=2 format=3 uid="uid://bhcds4r17xx6"]
 
 [ext_resource type="Script" path="res://objects/ui/menu/Menu.cs" id="1_xxowp"]
-[ext_resource type="Script" path="res://objects/ui/menu/MenuLineEdit.cs" id="2_ocm21"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 201.0
-offset_right = -202.0
-offset_bottom = -310.0
+offset_left = 11.0
+offset_top = -1.0
+offset_right = -392.0
+offset_bottom = -311.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_xxowp")
 
-[node name="d4" type="LineEdit" parent="." groups=["LineEdits"]]
+[node name="d4" type="SpinBox" parent="." groups=["LineEdits"]]
 layout_mode = 0
-offset_left = 164.0
-offset_top = 77.0
-offset_right = 231.062
-offset_bottom = 108.0
-script = ExtResource("2_ocm21")
+offset_left = 157.333
+offset_top = 41.3333
+offset_right = 240.396
+offset_bottom = 72.3333
 
 [node name="Label" type="Label" parent="d4" groups=["Labels"]]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 88.0
 offset_top = 1.0
-offset_right = 108.0
+offset_right = 128.0
 offset_bottom = 24.0
 text = "d4
 "
 
-[node name="d6" type="LineEdit" parent="." groups=["LineEdits"]]
+[node name="d6" type="SpinBox" parent="." groups=["LineEdits"]]
 layout_mode = 0
-offset_left = 164.0
-offset_top = 114.0
-offset_right = 231.062
-offset_bottom = 145.0
+offset_left = 157.333
+offset_top = 91.3333
+offset_right = 240.395
+offset_bottom = 122.333
 
 [node name="Label" type="Label" parent="d6" groups=["Labels"]]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 88.0
 offset_top = 1.0
-offset_right = 108.0
+offset_right = 128.0
 offset_bottom = 24.0
 text = "d6"
 
-[node name="d8" type="LineEdit" parent="." groups=["LineEdits"]]
+[node name="d8" type="SpinBox" parent="." groups=["LineEdits"]]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 153.0
-offset_right = 230.062
-offset_bottom = 184.0
+offset_left = 157.333
+offset_top = 140.0
+offset_right = 240.395
+offset_bottom = 171.0
 
 [node name="Label" type="Label" parent="d8" groups=["Labels"]]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 88.0
 offset_top = 1.0
-offset_right = 108.0
+offset_right = 128.0
 offset_bottom = 24.0
 text = "d8
 "
 
-[node name="d10" type="LineEdit" parent="." groups=["LineEdits"]]
+[node name="d10" type="SpinBox" parent="." groups=["LineEdits"]]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 190.0
-offset_right = 230.062
-offset_bottom = 221.0
+offset_left = 157.333
+offset_top = 194.0
+offset_right = 240.396
+offset_bottom = 225.0
 
 [node name="Label" type="Label" parent="d10" groups=["Labels"]]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 88.0
 offset_top = 1.0
-offset_right = 108.0
+offset_right = 128.0
 offset_bottom = 24.0
 text = "d10"
 
-[node name="d12" type="LineEdit" parent="." groups=["LineEdits"]]
+[node name="d12" type="SpinBox" parent="." groups=["LineEdits"]]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 228.0
-offset_right = 230.062
-offset_bottom = 259.0
+offset_left = 157.333
+offset_top = 248.0
+offset_right = 240.395
+offset_bottom = 279.0
 
 [node name="d12" type="Label" parent="d12" groups=["Labels"]]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 88.0
 offset_top = 1.0
-offset_right = 108.0
+offset_right = 128.0
 offset_bottom = 24.0
 text = "d12"
 
-[node name="d20" type="LineEdit" parent="." groups=["LineEdits"]]
+[node name="d20" type="SpinBox" parent="." groups=["LineEdits"]]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 264.0
-offset_right = 230.062
-offset_bottom = 295.0
+offset_left = 157.333
+offset_top = 299.333
+offset_right = 240.395
+offset_bottom = 330.333
 
 [node name="d20" type="Label" parent="d20" groups=["Labels"]]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 88.0
 offset_top = 1.0
-offset_right = 108.0
+offset_right = 128.0
 offset_bottom = 24.0
 text = "d20"
 
-[node name="SpinBox" type="SpinBox" parent="." groups=["AllCheckInput"]]
+[node name="AllCheck" type="SpinBox" parent="." groups=["AllCheckInput"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.015
 anchor_bottom = 0.015
-offset_left = 390.0
-offset_top = 80.28
-offset_right = 473.062
-offset_bottom = 111.28
+offset_left = 391.333
+offset_top = 67.5967
+offset_right = 474.395
+offset_bottom = 98.5967
 
-[node name="CheckAll" type="Label" parent="SpinBox"]
+[node name="CheckTotal" type="Label" parent="AllCheck"]
 layout_mode = 0
 offset_left = 91.0
 offset_top = 6.0
 offset_right = 123.0
 offset_bottom = 29.0
-text = "Check All"
+text = "Check Total"
+
+[node name="ICheck" type="SpinBox" parent="." groups=["ICheckInput"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.015
+anchor_bottom = 0.015
+offset_left = 391.0
+offset_top = 128.93
+offset_right = 474.062
+offset_bottom = 159.93
+
+[node name="CheckEach" type="Label" parent="ICheck"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 6.0
+offset_right = 123.0
+offset_bottom = 29.0
+text = "Check Each"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 172.0
+offset_right = 526.0
+offset_bottom = 196.0
+
+[node name="Label" type="Label" parent="CheckButton" groups=["Labels"]]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -1.0
+offset_right = 85.0
+offset_bottom = 22.0
+text = "d4
+"
+
+[node name="CheckButton2" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 196.0
+offset_right = 526.0
+offset_bottom = 220.0
+
+[node name="Label" type="Label" parent="CheckButton2" groups=["Labels"]]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -1.0
+offset_right = 85.0
+offset_bottom = 22.0
+text = "d6"
+
+[node name="CheckButton3" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 223.0
+offset_right = 526.0
+offset_bottom = 247.0
+
+[node name="Label" type="Label" parent="CheckButton3" groups=["Labels"]]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -1.0
+offset_right = 85.0
+offset_bottom = 22.0
+text = "d8
+"
+
+[node name="CheckButton4" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 248.0
+offset_right = 526.0
+offset_bottom = 272.0
+
+[node name="Label" type="Label" parent="CheckButton4" groups=["Labels"]]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -1.0
+offset_right = 85.0
+offset_bottom = 22.0
+text = "d10"
+
+[node name="CheckButton5" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 276.0
+offset_right = 526.0
+offset_bottom = 300.0
+
+[node name="d12" type="Label" parent="CheckButton5" groups=["Labels"]]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -1.0
+offset_right = 85.0
+offset_bottom = 22.0
+text = "d12"
+
+[node name="CheckButton6" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 302.0
+offset_right = 525.0
+offset_bottom = 326.0
+
+[node name="d20" type="Label" parent="CheckButton6" groups=["Labels"]]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -1.0
+offset_right = 85.0
+offset_bottom = 22.0
+text = "d20"

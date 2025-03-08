@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://is3h84d0l23h"
 path.s3tc="res://.godot/imported/Handpainted_Normal.png-a90148c5164439cb4a38273b8dc96a20.s3tc.ctex"
+path.etc2="res://.godot/imported/Handpainted_Normal.png-a90148c5164439cb4a38273b8dc96a20.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/summertime-dicefbx/textures/Handpainted_Normal.png"
-dest_files=["res://.godot/imported/Handpainted_Normal.png-a90148c5164439cb4a38273b8dc96a20.s3tc.ctex"]
+dest_files=["res://.godot/imported/Handpainted_Normal.png-a90148c5164439cb4a38273b8dc96a20.s3tc.ctex", "res://.godot/imported/Handpainted_Normal.png-a90148c5164439cb4a38273b8dc96a20.etc2.ctex"]
 
 [params]
 

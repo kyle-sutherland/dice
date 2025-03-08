@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfemhj4tbsk6q"
 path.s3tc="res://.godot/imported/initialShadingGroup_metallicRoughness.png-36f0f056a1ed56fb4c467d44b9d005b5.s3tc.ctex"
+path.etc2="res://.godot/imported/initialShadingGroup_metallicRoughness.png-36f0f056a1ed56fb4c467d44b9d005b5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/d20_with_pips/textures/initialShadingGroup_metallicRoughness.png"
-dest_files=["res://.godot/imported/initialShadingGroup_metallicRoughness.png-36f0f056a1ed56fb4c467d44b9d005b5.s3tc.ctex"]
+dest_files=["res://.godot/imported/initialShadingGroup_metallicRoughness.png-36f0f056a1ed56fb4c467d44b9d005b5.s3tc.ctex", "res://.godot/imported/initialShadingGroup_metallicRoughness.png-36f0f056a1ed56fb4c467d44b9d005b5.etc2.ctex"]
 
 [params]
 

@@ -23,12 +23,6 @@ public partial class HudUi : Control
 
     public override void _Ready()
     {
-        string diceManagerNodePath = GetTree().GetFirstNodeInGroup(DiceManagerGroup).GetPath();
-        DiceManager = GetNodeOrNull<DiceManager>(diceManagerNodePath);
-        if (DiceManager == null)
-        {
-            GD.PushWarning("No dice manager found in group " + DiceManagerGroup);
-        }
         Menu = (Menu)GetNode("Menu");
         MenuButton = GetNode<MenuButton>("MenuToggle");
         ThrowButton = GetNode<MenuButton>("ThrowButton");
@@ -38,8 +32,16 @@ public partial class HudUi : Control
         marquee = GetNodeOrNull<Label3D>(marqueeNodePath);
         string DiceThrowerNodePath = GetTree().GetFirstNodeInGroup(DiceThrowerGroup).GetPath();
         DiceThrower = GetNodeOrNull<DiceThrower>(DiceThrowerNodePath);
+        if (DiceThrower == null)
+        {
+            GD.PushWarning("No dice thrower found in group " + DiceThrowerGroup);
+        }
         string DiceManagerNodePath = GetTree().GetFirstNodeInGroup(DiceManagerGroup).GetPath();
         DiceManager = GetNodeOrNull<DiceManager>(DiceManagerNodePath);
+        if (DiceManager == null)
+        {
+            GD.PushWarning("No dice manager found in group " + DiceManagerGroup);
+        }
     }
 
     public override void _Process(double delta)
@@ -57,15 +59,32 @@ public partial class HudUi : Control
 
     private void ThrowButtonPressed()
     {
+        GD.Print("ThrowButtonPressed");
         DiceManager.ClearDice();
 
         DiceThrower.RollDice();
-        GD.Print("ThrowButtonPressed");
     }
 
     public string CreateMessage()
     {
         string message = "";
+        Vector3 acc = Input.GetGravity().Snapped(new Vector3(0.1f, 0.1f, 0.1f));
+        // //If the device is not moving, the acceleration vector is set to 0.
+        // float threshold = 0.4f;
+        // if (acc.X < threshold && acc.X > threshold * -1f)
+        // {
+        //     acc.X = 0;
+        // }
+        // if (acc.Y < threshold && acc.Y > threshold * -1f)
+        // {
+        //     acc.Y = 0;
+        // }
+        // if (acc.Z < threshold && acc.Z > threshold * -1f)
+        // {
+        //     acc.Z = 0;
+        // }
+        Vector3 GravityVector = new(acc.Y * -1, acc.Z, acc.X * -1);
+        message += $"acc: {GravityVector.X}\n {GravityVector.Y}\n {GravityVector.Z}\n";
         if (DiceManager.D4Parent.GetChildCount() != 0)
         {
             message += $"{DiceManager.D4Parent.GetChildCount()}d4: {DiceManager.D4Total}\n";

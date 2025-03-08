@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://xx4b3vvtl4uo"
 path.s3tc="res://.godot/imported/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse.png-e535372d17eb97d6eb7b4df91669efb4.s3tc.ctex"
+path.etc2="res://.godot/imported/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse.png-e535372d17eb97d6eb7b4df91669efb4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/dice (4)/source/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse.png"
-dest_files=["res://.godot/imported/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse.png-e535372d17eb97d6eb7b4df91669efb4.s3tc.ctex"]
+dest_files=["res://.godot/imported/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse.png-e535372d17eb97d6eb7b4df91669efb4.s3tc.ctex", "res://.godot/imported/Dice-2b0e3886b5de638dd3819e1b86ea863d_OutlineEffect_Dice_Diffuse.png-e535372d17eb97d6eb7b4df91669efb4.etc2.ctex"]
 
 [params]
 

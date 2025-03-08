@@ -3,38 +3,38 @@ using Godot;
 
 public partial class Menu : Control
 {
-    public LineEdit D4LineEdit { get; private set; }
+    public SpinBox D4SpinBox { get; private set; }
 
-    public LineEdit D6LineEdit { get; private set; }
+    public SpinBox D6SpinBox { get; private set; }
 
-    public LineEdit D8LineEdit { get; private set; }
+    public SpinBox D8SpinBox { get; private set; }
 
-    public LineEdit D10LineEdit { get; private set; }
+    public SpinBox D10SpinBox { get; private set; }
 
-    public LineEdit D12LineEdit { get; private set; }
+    public SpinBox D12SpinBox { get; private set; }
 
-    public LineEdit D20LineEdit { get; private set; }
+    public SpinBox D20SpinBox { get; private set; }
 
     public override void _Ready()
     {
-        D4LineEdit = (LineEdit)GetNode("d4");
-        D6LineEdit = (LineEdit)GetNode("d6");
-        D8LineEdit = (LineEdit)GetNode("d8");
-        D10LineEdit = (LineEdit)GetNode("d10");
-        D12LineEdit = (LineEdit)GetNode("d12");
-        D20LineEdit = (LineEdit)GetNode("d20");
+        D4SpinBox = (SpinBox)GetNode("d4");
+        D6SpinBox = (SpinBox)GetNode("d6");
+        D8SpinBox = (SpinBox)GetNode("d8");
+        D10SpinBox = (SpinBox)GetNode("d10");
+        D12SpinBox = (SpinBox)GetNode("d12");
+        D20SpinBox = (SpinBox)GetNode("d20");
 
-        D4LineEdit.Text = "0";
-        D6LineEdit.Text = "0";
-        D8LineEdit.Text = "0";
-        D10LineEdit.Text = "0";
-        D12LineEdit.Text = "0";
-        D20LineEdit.Text = "0";
+        D4SpinBox.Value = 0;
+        D6SpinBox.Value = 0;
+        D8SpinBox.Value = 0;
+        D10SpinBox.Value = 0;
+        D12SpinBox.Value = 0;
+        D20SpinBox.Value = 0;
 
-        D4LineEdit.TextChanged += ValidateDiceLimit;
+        D4SpinBox.ValueChanged += ValidateDiceLimit;
     }
 
-    private void ValidateDiceLimit(string entry)
+    private void ValidateDiceLimit(double entry)
     {
         GD.Print(entry);
     }

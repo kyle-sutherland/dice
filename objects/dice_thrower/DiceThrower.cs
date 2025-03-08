@@ -47,9 +47,6 @@ public partial class DiceThrower : Node3D
     [Export]
     public float LaunchForce { get; private set; } = 1000f;
 
-    [Export]
-    public PackedScene[] DieScenes { get; private set; } = new PackedScene[6];
-
     public PackedScene[] Dice { get; private set; } = new PackedScene[100];
 
     private Vector3 aimDirection;

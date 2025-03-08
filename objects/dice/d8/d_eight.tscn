@@ -18,8 +18,10 @@ normal_enabled = true
 normal_texture = ExtResource("5_daf05")
 
 [node name="DEight" type="RigidBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mass = 0.9
 physics_material_override = ExtResource("1_wy84t")
+center_of_mass_mode = 1
 script = ExtResource("1_ww274")
 
 [node name="D8" type="MeshInstance3D" parent="."]

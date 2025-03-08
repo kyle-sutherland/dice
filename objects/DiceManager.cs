@@ -107,19 +107,19 @@ public partial class DiceManager : Node
 
     public SpinBox AllCheckInput { get; private set; }
 
-    public Godot.Collections.Array<Node> LineEditArray { get; private set; }
+    public Godot.Collections.Array<Node> SpinBoxArray { get; private set; }
 
-    public LineEdit D4LineEdit { get; private set; }
+    public SpinBox D4SpinBox { get; private set; }
 
-    public LineEdit D6LineEdit { get; private set; }
+    public SpinBox D6SpinBox { get; private set; }
 
-    public LineEdit D8LineEdit { get; private set; }
+    public SpinBox D8SpinBox { get; private set; }
 
-    public LineEdit D10LineEdit { get; private set; }
+    public SpinBox D10SpinBox { get; private set; }
 
-    public LineEdit D12LineEdit { get; private set; }
+    public SpinBox D12SpinBox { get; private set; }
 
-    public LineEdit D20LineEdit { get; private set; }
+    public SpinBox D20SpinBox { get; private set; }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -135,13 +135,13 @@ public partial class DiceManager : Node
 
         SelectedDieIndex = 1;
 
-        LineEditArray = GetTree().GetNodesInGroup(LineEditsGroup);
-        D4LineEdit = (LineEdit)LineEditArray[0];
-        D6LineEdit = (LineEdit)LineEditArray[1];
-        D8LineEdit = (LineEdit)LineEditArray[2];
-        D10LineEdit = (LineEdit)LineEditArray[3];
-        D12LineEdit = (LineEdit)LineEditArray[4];
-        D20LineEdit = (LineEdit)LineEditArray[5];
+        SpinBoxArray = GetTree().GetNodesInGroup(LineEditsGroup);
+        D4SpinBox = (SpinBox)SpinBoxArray[0];
+        D6SpinBox = (SpinBox)SpinBoxArray[1];
+        D8SpinBox = (SpinBox)SpinBoxArray[2];
+        D10SpinBox = (SpinBox)SpinBoxArray[3];
+        D12SpinBox = (SpinBox)SpinBoxArray[4];
+        D20SpinBox = (SpinBox)SpinBoxArray[5];
 
         AllCheckInput = (SpinBox)GetTree().GetFirstNodeInGroup(AllCheckInputGroup);
 
@@ -205,12 +205,12 @@ public partial class DiceManager : Node
     //Loads Die objects into ReadyDieScenes array based on values stored in NDice array
     public void ReadyDice()
     {
-        NDice[0] = D4LineEdit.Text.ToInt();
-        NDice[1] = D6LineEdit.Text.ToInt();
-        NDice[2] = D8LineEdit.Text.ToInt();
-        NDice[3] = D10LineEdit.Text.ToInt();
-        NDice[4] = D12LineEdit.Text.ToInt();
-        NDice[5] = D20LineEdit.Text.ToInt();
+        NDice[0] = (int)D4SpinBox.Value;
+        NDice[1] = (int)D6SpinBox.Value;
+        NDice[2] = (int)D8SpinBox.Value;
+        NDice[3] = (int)D10SpinBox.Value;
+        NDice[4] = (int)D12SpinBox.Value;
+        NDice[5] = (int)D20SpinBox.Value;
         int nSum = 0;
         for (int i = 0; i < NDice.GetLength(0); i++)
         {

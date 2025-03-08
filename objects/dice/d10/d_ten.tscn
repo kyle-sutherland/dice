@@ -18,6 +18,7 @@ normal_enabled = true
 normal_texture = ExtResource("5_3v84d")
 
 [node name="DTen" type="RigidBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mass = 0.9
 physics_material_override = ExtResource("1_ketk8")
 script = ExtResource("1_4pqe4")

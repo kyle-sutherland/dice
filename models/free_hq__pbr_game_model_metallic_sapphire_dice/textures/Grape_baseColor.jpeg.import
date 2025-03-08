@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://8vaxowpprq4h"
 path.s3tc="res://.godot/imported/Grape_baseColor.jpeg-90e310f0efa72307ff0d67132dd61147.s3tc.ctex"
+path.etc2="res://.godot/imported/Grape_baseColor.jpeg-90e310f0efa72307ff0d67132dd61147.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/free_hq__pbr_game_model_metallic_sapphire_dice/textures/Grape_baseColor.jpeg"
-dest_files=["res://.godot/imported/Grape_baseColor.jpeg-90e310f0efa72307ff0d67132dd61147.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grape_baseColor.jpeg-90e310f0efa72307ff0d67132dd61147.s3tc.ctex", "res://.godot/imported/Grape_baseColor.jpeg-90e310f0efa72307ff0d67132dd61147.etc2.ctex"]
 
 [params]
 
