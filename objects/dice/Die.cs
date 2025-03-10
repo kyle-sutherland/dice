@@ -51,19 +51,19 @@ public abstract partial class Die : RigidBody3D
             ShapeCast3D shapecast = GetNode<ShapeCast3D>($"face{i + 1}");
             ShapeCasts[i] = shapecast;
         }
-        GravityScale = 0.0f;
+        // GravityScale = 0.0f;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        DeviceGravity = Input.GetGravity();
+        // DeviceGravity = Input.GetGravity();
         DeviceAcceleration = Input.GetAccelerometer();
-        GravityVector = new(DeviceGravity.X, DeviceGravity.Z, DeviceGravity.Y * -1);
+        // GravityVector = new(DeviceGravity.X, DeviceGravity.Z, DeviceGravity.Y * -1);
     }
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
-        ApplyForce(GravityVector);
+        // ApplyForce(GravityVector);
     }
 
     public override void _Process(double delta)

@@ -101,13 +101,13 @@ uv1_triplanar = true
 uv1_triplanar_sharpness = 0.42045
 
 [node name="World" type="Node3D" groups=["World"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0667973, -0.0298014, 0.0355034)
+transform = Transform3D(0.5, 0.146447, -0.853554, -0.5, 0.853554, -0.146447, 0.707107, 0.5, 0.5, -0.0667973, -0.0298014, 0.0355034)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_06rpj")
 
 [node name="LevelRoot" type="StaticBody3D" parent="." groups=["LevelRoot"]]
-transform = Transform3D(-4.37114e-08, 0, -1, 5.96046e-08, 1, -8.88178e-15, 1, -5.96046e-08, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(0.710875, -0.499499, -0.495134, 0.502599, 0.853244, -0.139173, 0.491987, -0.149919, 0.857597, 0, 0, 0)
 script = ExtResource("2_p8n32")
 
 [node name="DiceThrower" parent="LevelRoot" groups=["DiceThrower"] instance=ExtResource("1_uvifp")]
