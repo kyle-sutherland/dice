@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwltotyvb7w0d"]
 
-[ext_resource type="Script" path="res://addons/rebuild_cs_on_focus/RebuildOnFocusUi.cs" id="1_rsqhw"]
+[ext_resource type="Script" uid="uid://bnms60eriu8bk" path="res://addons/rebuild_cs_on_focus/RebuildOnFocusUi.cs" id="1_rsqhw"]
 
 [node name="RebuildOnFocusUi" type="HBoxContainer"]
 anchors_preset = 15

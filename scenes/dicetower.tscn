@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://4i8hyhaik24l" path="res://textures/Leather026_2K-PNG/Leather026_2K-PNG_NormalGL.png" id="11_umowb"]
 [ext_resource type="Texture2D" uid="uid://b3mlcdpjenqtq" path="res://textures/Leather026_2K-PNG/Leather026_2K-PNG_Roughness.png" id="12_6nqpe"]
 [ext_resource type="PackedScene" uid="uid://b4gcab7fghmvy" path="res://objects/dice_thrower/dice_thrower.tscn" id="13_2hgtb"]
-[ext_resource type="Script" path="res://scenes/Floor2.cs" id="13_g11il"]
+[ext_resource type="Script" uid="uid://dgosr60opbrf3" path="res://scenes/Floor2.cs" id="13_g11il"]
 [ext_resource type="PackedScene" uid="uid://cdhdbl4c0dp5q" path="res://objects/dice/d4/d_four.tscn" id="14_f1vst"]
 [ext_resource type="PackedScene" uid="uid://cshrqjhobm7ro" path="res://objects/dice/d6/d_six.tscn" id="15_rnhpd"]
 [ext_resource type="PackedScene" uid="uid://dvji0mjdgloq8" path="res://objects/dice/d8/d_eight.tscn" id="16_q7ey3"]

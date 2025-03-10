@@ -170,7 +170,7 @@ public partial class DiceThrower : Node3D
                 float torqueY;
                 float torqueZ;
                 aimDirection = new Vector3(aimX, aimY, aimZ) + rotation;
-                LaunchForce = random.RandfRange(1200f, 1800f);
+                LaunchForce = random.RandfRange(120f, 180f);
                 DiceManager.AssignDieToParent(dieInstance, dieInstanceTypeName);
                 // else
                 // {

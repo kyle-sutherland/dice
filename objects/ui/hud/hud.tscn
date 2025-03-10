@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfc32i7sdkvrj"]
 
-[ext_resource type="Script" path="res://objects/ui/hud/HudUi.cs" id="1_xcd1e"]
+[ext_resource type="Script" uid="uid://d0r7rhp4vg5hp" path="res://objects/ui/hud/HudUi.cs" id="1_xcd1e"]
 [ext_resource type="FontFile" uid="uid://erdgllynwqkw" path="res://examples_dd3d/Roboto-Bold.ttf" id="2_snqdd"]
 [ext_resource type="PackedScene" uid="uid://bhcds4r17xx6" path="res://objects/ui/menu/menu.tscn" id="3_acfds"]
 

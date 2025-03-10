@@ -2,7 +2,7 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_jp3de"]
 [ext_resource type="ArrayMesh" uid="uid://m4bl281dphsj" path="res://models/dfour.obj" id="1_l8ouk"]
-[ext_resource type="Script" path="res://objects/dice/d4/DFour.cs" id="2_w1k8x"]
+[ext_resource type="Script" uid="uid://c4vh6pekixac0" path="res://objects/dice/d4/DFour.cs" id="2_w1k8x"]
 [ext_resource type="Texture2D" uid="uid://qjeody7635em" path="res://models/Simple RPG Dice/Textures/T_Dice_A_4096.png" id="3_oj4o2"]
 [ext_resource type="ArrayMesh" uid="uid://bblb45ebrvky4" path="res://models/Simple RPG Dice/OBJ/Dice_D4.obj" id="4_0e8cw"]
 [ext_resource type="Texture2D" uid="uid://bdmmkpfal2xje" path="res://models/Simple RPG Dice/Textures/T_Dice_N_4096.png" id="4_5xvpp"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://51mgb5qh7oba"]
 
-[ext_resource type="Script" path="res://objects/player/Player.cs" id="1_eaaoe"]
+[ext_resource type="Script" uid="uid://u6dgbi8rwil0" path="res://objects/player/Player.cs" id="1_eaaoe"]
 [ext_resource type="PackedScene" uid="uid://dfc32i7sdkvrj" path="res://objects/ui/hud/hud.tscn" id="2_tgt4e"]
 
 [node name="Player" type="CharacterBody3D"]

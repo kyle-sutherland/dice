@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcwbl0fh5xxmv"]
 
-[ext_resource type="Script" path="res://addons/datatable_godot/ui/nodes/generatedClassPreview/generatedClassPreview.gd" id="1_pkx34"]
+[ext_resource type="Script" uid="uid://c0a5yunbu5hf5" path="res://addons/datatable_godot/ui/nodes/generatedClassPreview/generatedClassPreview.gd" id="1_pkx34"]
 
 [sub_resource type="EditorSyntaxHighlighter" id="EditorSyntaxHighlighter_lexb6"]
 

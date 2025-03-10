@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b4fw3esbfywju" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_Color.png" id="1_s3xga"]
 [ext_resource type="Material" uid="uid://cm48tlxr8n62s" path="res://scenes/mainsk1.tres" id="1_tsulg"]
 [ext_resource type="PackedScene" uid="uid://b4gcab7fghmvy" path="res://objects/dice_thrower/dice_thrower.tscn" id="1_uvifp"]
-[ext_resource type="Script" path="res://scenes/LevelRoot.cs" id="2_p8n32"]
+[ext_resource type="Script" uid="uid://d1g35brrdfa11" path="res://scenes/LevelRoot.cs" id="2_p8n32"]
 [ext_resource type="Texture2D" uid="uid://d3nkg7xnabp13" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_Displacement.png" id="2_w24vt"]
 [ext_resource type="Texture2D" uid="uid://clt5cuus8c8kg" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_Metalness.png" id="3_rvw65"]
 [ext_resource type="Texture2D" uid="uid://415bahjw2553" path="res://textures/Metal003_2K-PNG/Metal003_2K-PNG_NormalGL.png" id="4_qktsv"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dvji0mjdgloq8" path="res://objects/dice/d8/d_eight.tscn" id="16_6cnwn"]
 [ext_resource type="PackedScene" uid="uid://qd20mngvn28k" path="res://objects/dice/d10/d_ten.tscn" id="17_rrld6"]
 [ext_resource type="PackedScene" uid="uid://dekb7okf34gs7" path="res://objects/dice/d12/d_twelve.tscn" id="18_xcwqp"]
-[ext_resource type="Script" path="res://objects/DiceManager.cs" id="21_hqr7y"]
+[ext_resource type="Script" uid="uid://citynons80ygk" path="res://objects/DiceManager.cs" id="21_hqr7y"]
 
 [sub_resource type="Sky" id="Sky_n2hnm"]
 sky_material = ExtResource("1_tsulg")

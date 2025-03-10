@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dekb7okf34gs7"]
 
-[ext_resource type="Script" path="res://objects/dice/d12/DTwelve.cs" id="1_8ux34"]
+[ext_resource type="Script" uid="uid://dv886tvkdncaq" path="res://objects/dice/d12/DTwelve.cs" id="1_8ux34"]
 [ext_resource type="ArrayMesh" uid="uid://b66jbsffj0non" path="res://models/d12.obj" id="1_evcvv"]
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_u0xrl"]
 [ext_resource type="Texture2D" uid="uid://qjeody7635em" path="res://models/Simple RPG Dice/Textures/T_Dice_A_4096.png" id="4_b56i1"]
@@ -19,7 +19,7 @@ normal_texture = ExtResource("5_g8a4a")
 
 [node name="DTwelve" type="RigidBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mass = 1.1
+mass = 0.11
 physics_material_override = ExtResource("1_u0xrl")
 center_of_mass_mode = 1
 script = ExtResource("1_8ux34")

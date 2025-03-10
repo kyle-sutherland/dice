@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dvji0mjdgloq8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bylsub7638q8c" path="res://models/d8.obj" id="1_lfp5a"]
-[ext_resource type="Script" path="res://objects/dice/d8/DEight.cs" id="1_ww274"]
+[ext_resource type="Script" uid="uid://bnrtinqi564p2" path="res://objects/dice/d8/DEight.cs" id="1_ww274"]
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_wy84t"]
 [ext_resource type="Texture2D" uid="uid://qjeody7635em" path="res://models/Simple RPG Dice/Textures/T_Dice_A_4096.png" id="4_7eyok"]
 [ext_resource type="Texture2D" uid="uid://bdmmkpfal2xje" path="res://models/Simple RPG Dice/Textures/T_Dice_N_4096.png" id="5_daf05"]

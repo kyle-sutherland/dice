@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://qd20mngvn28k"]
 
-[ext_resource type="Script" path="res://objects/dice/d10/DTen.cs" id="1_4pqe4"]
+[ext_resource type="Script" uid="uid://dwqf78gcy3dna" path="res://objects/dice/d10/DTen.cs" id="1_4pqe4"]
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_ketk8"]
 [ext_resource type="ArrayMesh" uid="uid://dlw3e7eknv81l" path="res://models/dten.obj" id="2_uyomb"]
 [ext_resource type="Texture2D" uid="uid://qjeody7635em" path="res://models/Simple RPG Dice/Textures/T_Dice_A_4096.png" id="4_4gjam"]

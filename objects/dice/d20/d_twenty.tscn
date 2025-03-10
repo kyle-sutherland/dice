@@ -1,8 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ckh4jq7q54ht5"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_stvub"]
-[ext_resource type="Script" path="res://objects/dice/d20/DTwenty.cs" id="2_1ccoi"]
-[ext_resource type="PackedScene" uid="uid://bgsjtodaif53l" path="res://models/dice-d20/source/dadoD20.fbx" id="3_1rx8j"]
+[ext_resource type="Script" uid="uid://beskl74wsw4lv" path="res://objects/dice/d20/DTwenty.cs" id="2_1ccoi"]
 [ext_resource type="ArrayMesh" uid="uid://dx184l8yuy31l" path="res://models/dtwenty.obj" id="3_xk5qv"]
 [ext_resource type="Texture2D" uid="uid://0p32d3evsis4" path="res://models/dice-d20/textures/dadosText.png" id="4_mg61o"]
 [ext_resource type="Texture2D" uid="uid://ps5telfg2mvv" path="res://models/dice-d20/textures/NormalMap.png" id="5_lb4dk"]
@@ -10,6 +9,9 @@
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vtlmr"]
 points = PackedVector3Array(-0.894425, -0.447297, -0.000166595, -0.000175118, -1, -0.000166595, -0.276487, -0.447297, 0.85064, -0.7237, 0.447191, 0.525572, -0.7237, 0.447191, -0.525738, -0.276487, -0.447297, -0.85064, 0.723525, -0.447297, -0.525738, 0.723525, -0.447297, 0.525572, 0.276312, 0.447191, 0.85064, -0.000175118, 1.00441, -0.000166595, 0.276312, 0.447191, -0.85064, 0.894425, 0.447191, -0.000166595)
+
+[sub_resource type="Resource" id="Resource_6rj0t"]
+metadata/__load_path__ = "res://models/dice-d20/source/dadoD20.fbx"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emdi0"]
 albedo_texture = ExtResource("4_mg61o")
@@ -30,7 +32,7 @@ metadata/type = "d20"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_vtlmr")
 
-[node name="Root Scene" parent="." instance=ExtResource("3_1rx8j")]
+[node name="Root Scene" parent="."]
 transform = Transform3D(36.26, 0, 0, 0, 36.26, 0, 0, 0, 36.26, 0, 0, 0)
 
 [node name="D20" parent="Root Scene/RootNode" index="0"]

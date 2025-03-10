@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4gcab7fghmvy"]
 
-[ext_resource type="Script" path="res://objects/dice_thrower/DiceThrower.cs" id="1_10mub"]
+[ext_resource type="Script" uid="uid://bbc4ypb48de6o" path="res://objects/dice_thrower/DiceThrower.cs" id="1_10mub"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gs5x7"]
 top_radius = 0.0

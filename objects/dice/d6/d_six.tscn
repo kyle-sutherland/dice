@@ -1,12 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://cshrqjhobm7ro"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cxrk85w8rg204" path="res://objects/dice/diePhysicsMat.tres" id="1_eh4u7"]
-[ext_resource type="Script" path="res://objects/dice/d6/DSix.cs" id="1_y0yje"]
-[ext_resource type="PackedScene" uid="uid://ck7onql8etj8m" path="res://models/diedice-red/source/Dice.fbx" id="3_88hyc"]
+[ext_resource type="Script" uid="uid://c24yaa0j8nrsp" path="res://objects/dice/d6/DSix.cs" id="1_y0yje"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pyf8x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5dv68"]
+
+[sub_resource type="Resource" id="Resource_2gt4u"]
+metadata/__load_path__ = "res://models/diedice-red/source/Dice.fbx"
 
 [node name="DSix" type="RigidBody3D"]
 transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 0, 0)
@@ -48,5 +50,5 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.5, 0)
 shape = SubResource("SphereShape3D_5dv68")
 target_position = Vector3(0, -0.5, 0)
 
-[node name="Root Scene" parent="." instance=ExtResource("3_88hyc")]
+[node name="Root Scene" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
